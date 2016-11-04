@@ -1,0 +1,306 @@
+********** 8:50:43 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetAllInspections()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetAllDrugProduct() in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 47
+
+********** 8:50:48 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 8:50:52 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 8:51:47 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetAllInspections()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetAllDrugProduct() in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 47
+
+********** 8:51:58 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 8:52:02 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 8:56:03 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetAllInspections()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetAllDrugProduct() in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 47
+
+********** 8:56:19 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 8:56:20 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 8:58:16 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetAllInspections()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetAllDrugProduct() in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 47
+
+********** 8:58:22 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 8:58:56 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetAllInspections()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetAllDrugProduct() in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 47
+
+********** 8:59:00 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 9:02:07 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetAllInspections()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetAllDrugProduct() in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 47
+
+********** 9:02:08 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 9:05:26 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
+********** 9:05:42 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: Oracle Communication: Failed to connect to server or failed to parse connect string
+Source: DbConnection.cs - GetDrugProductByDrugCode()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetDrugProductByDrugCode(Int32 id) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 100
+
