@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using MdallWebApi.Models;
 using MdallWebApi.Controllers;
+using System.Text;
 
 namespace MdallWebApi
 {
@@ -24,63 +25,23 @@ namespace MdallWebApi
             }
         }
 
-        //public static string GetCompanyListForJson(string lang, string status, string term)
-        //{
-        //    var companyController = new CompanyController();
-        //    var companyList = new List<Company>();
-        //    var jsonResult = string.Empty;
-
-        //    try
-        //    {
-        //        companyList = companyController.GetAllCompany(status, term).ToList();
-        //        if(companyList!= null && companyList.Count > 0)
-        //        {
-        //            jsonResult = JsonHelper.JsonSerializer<List<Company>>(companyList);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var errorMessages = string.Format("UtilityHelper - GetCompanyList()- Error Message:{0}", ex.Message);
-        //        ExceptionHelper.LogException(ex, errorMessages);
-        //    }
-        //    finally
-        //    {
-
-        //    }
-        //    return jsonResult;
-        //}
-
-
-        //public static string GetCompanyByIDForJson(string lang, int id)
-        //{
-        //    var companyController = new CompanyController();
-        //    var company = new Company();
-        //    var jsonResult = string.Empty;
-
-        //    try
-        //    {
-        //        company = companyController.GetCompanyById(id, lang);
-        //        if (company != null && company.company_id > 0)
-        //        {
-        //            jsonResult = JsonHelper.JsonSerializer<Company>(company);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var errorMessages = string.Format("UtilityHelper - GetCompanyByIDForJson()- Error Message:{0}", ex.Message);
-        //        ExceptionHelper.LogException(ex, errorMessages);
-        //    }
-        //    finally
-        //    {
-
-        //    }
-        //    return jsonResult;
-        //}
-
 
         public static List<T> ToNonNullList<T>(this IEnumerable<T> obj)
         {
             return obj == null ? new List<T>() : obj.ToList();
+        }
+
+        public static string BuildAddress(Company company)
+        {
+            var address = new StringBuilder();
+            address.Append(company.addr_line_1).Append(" ");
+            address.Append(company.addr_line_2).Append(" ");
+            address.Append(company.addr_line_3).AppendLine();
+            address.Append(company.city).Append(",");
+            address.Append(company.region_cd).Append(",");
+            address.Append(company.country_cd).Append(",");
+            address.Append(company.postal_code);
+            return address.ToString();
         }
 
     }

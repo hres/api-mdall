@@ -280,13 +280,16 @@
     <Content Include="instruments-medicaux.html" />
     <Content Include="instruments-medicaux-detail.html" />
     <Content Include="instruments-medicaux-resultat.html" />
+    <Content Include="medical-device-licence.html" />
+    <Content Include="medical-device-company.html" />
     <Content Include="medical-device-detail.html" />
+    <Content Include="medical-device-result-licence.html" />
+    <Content Include="medical-device-result-company.html" />
     <Content Include="medical-device-result2.html" />
     <Content Include="medical-device-result.html" />
     <Content Include="medical-device-result3.html" />
     <Content Include="medical-device.html" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
-    <Content Include="test.html" />
     <Content Include="StaticFallbackFiles\gcweb\footer-en.html" />
     <Content Include="StaticFallbackFiles\gcweb\footer-fr.html" />
     <Content Include="StaticFallbackFiles\gcweb\prefooter-en.html" />

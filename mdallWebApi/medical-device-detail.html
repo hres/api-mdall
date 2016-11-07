@@ -90,10 +90,6 @@
     <div class="container">
         <main role="main" property="mainContentOfPage" class="container">
             <h1 property="name" id="wb-cont">Active licence result</h1>
-            <div>
-                <a href="medical-device.html">New search</a>
-            </div>
-
             <!-- Display Company Info-->
             <section class="panel panel-default">
                 <div class="panel-heading">
@@ -105,11 +101,17 @@
                     </div>
                 </div>
                 <div class="panel-body">
+                    <!--<div class="row mrgn-bttm-0">
+                        <p id="companyName"></p>
+                        <div class="col-sm-10">
+                            <p class="pull-right" id="linkCompanyList"></p>
+                        </div>
+                    </div>-->
                     <div><p id="companyName"></p></div>
-                    <div><p id="address"></p></div>
+                    <div><p class="mrgn-tp-0" id="address"></p></div>
                     <div class="row">
                         <p class="col-sm-2"><strong>Company&nbsp;ID&nbsp;:&nbsp;</strong></p>
-                        <div class="col-sm-10 mrgn-lft-0"><p id="companyID"></p></div>
+                        <div><p class="col-sm-10" id="companyID"></p></div>                       
                     </div>
                     <div class="table-responsive">
                         <table class="wb-tables table-bordered table-condensed">
@@ -171,14 +173,15 @@
     <script>
         var lang = "en";
         var id = getParameterByName("id");
-        var serviceURL = "./MdallJson//GetCompanyByIDForJson";
+        var licID = getParameterByName("licID");
+        var serviceURLforDetail = "./MdallJson//GetCompanyByIDForJson";
 
         window["wb-tables"] = {
             "processing": true,
             "ajax": {
-                "url": serviceURL,
+                "url": serviceURLforDetail,
                 "dataType": "json",
-                "data": {  id: id, lang: lang },
+                "data": {  id: id, licID: licID, lang: lang },
                 "type": "GET",
                 "dataSrc": "data.licenceList",
                 "error": function (xhr, err) {
@@ -188,12 +191,18 @@
             },
             "initComplete": function (settings, json) {
                 if ($.trim(json.data.company_id) == 0) {
-                    alert("error");
+                   // alert("error");
                 }
                 else {
-                    $('#companyName').append(json.data.company_name);
                     $('#address').append(json.data.company_address);
                     $('#companyID').append(json.data.company_id);
+                    if (licID > 0) {
+                        $('#companyName').append('<a href=medical-device-detail.html?lang=en&id=' + json.data.company_id + '>' +  json.data.company_name + '</a>');
+                    }
+                    else
+                    {
+                        $('#companyName').append(json.data.company_name);
+                    }
                 }
             },
             "ordering": false,

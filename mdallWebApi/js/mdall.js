@@ -1,4 +1,4 @@
-﻿//var mdall = "http://localhost:51195/Controllers/mdallController.ashx?";
+﻿var serviceURL = "./MdallJson/GetAllListForJsonByCategory";
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -7,32 +7,6 @@ function getParameterByName(name) {
      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));    
 }
 
-function goMdallUrl(lang, status, term) {
-    var searchUrl = mdall + "lang=" + lang + "&status=" + status + "&term=" + term;
-    return searchUrl;
-}
-
-function goMdallLangUrl(lang, pType) {
-    var term = getParameterByName("term");
-    var langSwitch = lang == 'en' ? "fr" : "en";
-    var langUrl = lang == 'fr' ? "instruments-medicaux-resultat.html" : "medical-device-result.html";
-    langUrl += "?term=" + term + "&pType=" + pType + "&lang=" + langSwitch;
-    return langUrl;
-}
-
-function goCompanyUrlByID(lang) {
-    var companyId = getParameterByName("companyId");
-    var goCompanyByIDUrl = mdall + "lang=" + lang + "&companyId=" + companyId;
-    console.log(goCompanyByIDUrl);
-    return goCompanyByIDUrl;
-}
-
-function goCompanyUrl(lang, term) {
-    //http://localhost:51195/api-v1/company/?type=json&status=active&company_name=bayer
-    var goCompanyUrl = mdall + "company/?type=json&status=active&company_name=" + term;
-    console.log(goCompanyUrl);
-    return goCompanyUrl;
-}
 
 function OnFail(result) {
     window.location.href = "./genericError.html";
@@ -46,12 +20,11 @@ function getDeviceListInfo(data) {
     }
     var deviceDetail = "";
 
-    //console.log("DeviceList :" + data.length);
     var txt = "";
     var i;
     for (i = 0; i < data.length; i++) {
 
-        console.log("deviceIdentifierList" + i + ":" + data[i].deviceIdentifierList.length);
+       // console.log("deviceIdentifierList" + i + ":" + data[i].deviceIdentifierList.length);
         if (data[i].deviceIdentifierList.length == 1) {
             if ($.trim(data[i].device_first_issue_dt) != '') {
                 deviceDetail += "<tr><td>" + formatedDate(data[i].device_first_issue_dt) + "</td>";
@@ -201,79 +174,3 @@ function formatedOrderedList(data) {
 }
 
 
-var serviceURL = "./MdallJson/GetAllListForJsonByCategory";
-function defaultTab(lang, status, searchTerm, category) {
-    window["wb-tables"] = {
-        "processing": true,
-        "destroy": true,
-        "ajax": {
-            "url": serviceURL,
-            "data": { lang: lang, status: status, term: searchTerm, categoryType: 1 },
-            "dataType": "json",
-            "dataSrc": "companyResult",
-            "error": function (xhr, err) {
-                alert("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
-                alert("responseText: " + xhr.responseText);
-            },
-        },
-        "columns": [
-                        { "data": "company_name" },
-                        {
-
-                            "data": null,
-                            "render": function (data, type, full) {
-                                return data.addr_line_1 + ' ' + data.addr_line_2 + ' ' + data.addr_line_3 + '<br>' + data.city + ', ' + data.region_cd + ', ' + data.country_cd + ', ' + data.postal_code;
-                            }
-                        },
-                        {
-                            "data": null,
-                            "render": function (data, type, full) {
-                                return '<a href=medical-device-detail.html?lang=en&id=' + data.company_id + '>' + data.company_id + '</a>';
-                            }
-                        }
-
-        ]
-    }
-}
-
-function licenceNameTab(lang, status, searchTerm, category) {
-    alert("Im panel 222 ");
-    //$('.wb-tables').on('xhr.dt', function (e, settings, json, xhr) {
-       // var a = json.data.length;
-    // console.log(a);
-
-    //$(".wb-tables").on("wb-updated.wb-tables", function (event, settings) {
-    //    alert("Im panel 2 updated ");
-    //});
-    window["wb-tables"] = {
-        "processing": true,
-        "destroy": true,
-        "ajax": {
-            "url": serviceURL,
-            "data": { lang: lang, status: status, term: searchTerm, categoryType: 2 },
-            "dataType": "json",
-            "dataSrc": "licenceResult",
-            "error": function (xhr, err) {
-                alert("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
-                alert("responseText: " + xhr.responseText);
-            },
-        },
-        "columns": [
-                        {
-                            "data": null,
-                            "render": function (data, type, full) {
-                                return '<a href=medical-device-detail.html?lang=en&id=' + data.application_id + '>' + data.licence_name + '</a>';
-                            }
-                        },
-                        { "data": "licence_type_desc" },
-                        {
-                            "data": null,
-                            "render": function (data, type, full) {
-                                return '<a href=medical-device-detail.html?lang=en&id=' + data.company_id + '>' + data.company_id + '</a>';
-                            }
-                        }
-
-        ]
-    }
-   // });
-}

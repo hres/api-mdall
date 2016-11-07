@@ -102,9 +102,7 @@ namespace MdallWebApi
             }
             commandText += " L.ORIGINAL_LICENCE_NO = " + id;
 
-            using (
-
-            OracleConnection con = new OracleConnection(MdallDBConnection))
+            using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
                 try
@@ -127,7 +125,6 @@ namespace MdallWebApi
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.licence_type_cd = dr["LICENCE_TYPE_CD"] == DBNull.Value ? string.Empty : dr["LICENCE_TYPE_CD"].ToString().Trim();
                                 item.company_id = dr["COMPANY_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_ID"]);
-
                                 licence = item;
                             }
                         }

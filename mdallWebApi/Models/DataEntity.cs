@@ -21,6 +21,8 @@ namespace MdallWebApi.Models
         public int company_id { get; set; }
         public string company_name { get; set; }
         public string company_address { get; set; }
+        public int device_id { get; set; }
+        public string device_name { get; set; }
     }
 
 
