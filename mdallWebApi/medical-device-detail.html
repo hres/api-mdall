@@ -114,8 +114,8 @@
                         <div><p class="col-sm-10" id="companyID"></p></div>                       
                     </div>
                     <div class="table-responsive">
-                        <table class="wb-tables table-bordered table-condensed">
-                            <caption class="text-left">Device details</caption>
+                        <table class="wb-tables table-responsive table-bordered table-condensed">
+                            <caption class="wb-inv text-left">Device details</caption>
                             <thead>
                                 <tr class="bg-primary">
                                     <th>No</th>
@@ -174,6 +174,8 @@
         var lang = "en";
         var id = getParameterByName("id");
         var licID = getParameterByName("licID");
+        var devID = getParameterByName("devID");
+        var identifier = getParameterByName("identifier");
         var serviceURLforDetail = "./MdallJson//GetCompanyByIDForJson";
 
         window["wb-tables"] = {
@@ -181,7 +183,7 @@
             "ajax": {
                 "url": serviceURLforDetail,
                 "dataType": "json",
-                "data": {  id: id, licID: licID, lang: lang },
+                "data": { id: id, licID: licID, devID: devID, identifier: identifier, lang: lang },
                 "type": "GET",
                 "dataSrc": "data.licenceList",
                 "error": function (xhr, err) {
@@ -196,7 +198,7 @@
                 else {
                     $('#address').append(json.data.company_address);
                     $('#companyID').append(json.data.company_id);
-                    if (licID > 0) {
+                    if (licID > 0 || devID > 0) {
                         $('#companyName').append('<a href=medical-device-detail.html?lang=en&id=' + json.data.company_id + '>' +  json.data.company_name + '</a>');
                     }
                     else
@@ -209,7 +211,7 @@
             "bFilter": false,
             "columns": [
                          {
-                            "data": "original_licence_no",
+                            "data": "licence.original_licence_no",
                             "sType": "number",
                             "visible": false,
                             "searchable": false
@@ -217,7 +219,7 @@
                          {
                                 "data": null,
                                 "render": function (data, type, full) {
-                                    return "<div><strong>Licence No.&nbsp;:&nbsp;" + data.original_licence_no + "</strong><br/>Type&nbsp;:&nbsp;" + data.licence_type_desc + "<br/>Device class&nbsp;:&nbsp;" + data.appl_risk_class + "<br/>Licence name&nbsp;:&nbsp;" + data.licence_name +"</div>";
+                                    return "<div><strong>Licence No.&nbsp;:&nbsp;" + data.licence.original_licence_no + "</strong><br/>Type&nbsp;:&nbsp;" + data.licence.licence_type_desc + "<br/>Device class&nbsp;:&nbsp;" + data.licence.appl_risk_class + "<br/>Licence name&nbsp;:&nbsp;" + data.licence.licence_name + "</div>";
                                 }
                          },
                          {

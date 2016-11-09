@@ -23,14 +23,13 @@ function getDeviceListInfo(data) {
     var txt = "";
     var i;
     for (i = 0; i < data.length; i++) {
-
-       // console.log("deviceIdentifierList" + i + ":" + data[i].deviceIdentifierList.length);
+        //console.log("deviceIdentifierList" + i + ":" + data[i].deviceIdentifierList.length);
         if (data[i].deviceIdentifierList.length == 1) {
-            if ($.trim(data[i].device_first_issue_dt) != '') {
-                deviceDetail += "<tr><td>" + formatedDate(data[i].device_first_issue_dt) + "</td>";
+            if ($.trim(data[i].device.device_first_issue_dt) != '') {
+                deviceDetail += "<tr><td>" + formatedDate(data[i].device.device_first_issue_dt) + "</td>";
             }
-            if ($.trim(data[i].trade_name) != '') {
-                deviceDetail += "<td>" + data[i].trade_name + "</td>";
+            if ($.trim(data[i].device.trade_name) != '') {
+                deviceDetail += "<td>" + data[i].device.trade_name + "</td>";
             }
             if ($.trim(data[i].deviceIdentifierList[0].identifier_first_issue_dt) != '')
             {
@@ -48,12 +47,12 @@ function getDeviceListInfo(data) {
             $.each(data[i].deviceIdentifierList, function (index, record) {
                 if (index == 0) {
                     //console.log("Im here index =" + index);
-                    if ($.trim(data[i].device_first_issue_dt) != '') {
-                        deviceDetail += "<tr><td scope='rowgroup' rowspan='" + data[i].deviceIdentifierList.length + "'>" + formatedDate(data[i].device_first_issue_dt) + "</td>";
+                    if ($.trim(data[i].device.device_first_issue_dt) != '') {
+                        deviceDetail += "<tr><td scope='rowgroup' rowspan='" + data[i].deviceIdentifierList.length + "'>" + formatedDate(data[i].device.device_first_issue_dt) + "</td>";
 
                     }
-                    if ($.trim(data[i].trade_name) != '') {
-                        deviceDetail += "<td scope='rowgroup' rowspan='" + data[i].deviceIdentifierList.length + "'>" + data[i].trade_name + "</td>";
+                    if ($.trim(data[i].device.trade_name) != '') {
+                        deviceDetail += "<td scope='rowgroup' rowspan='" + data[i].deviceIdentifierList.length + "'>" + data[i].device.trade_name + "</td>";
                     }
                     if ($.trim(data[i].deviceIdentifierList[0].identifier_first_issue_dt) != '') {
                         deviceDetail += "<td>" + formatedDate(data[i].deviceIdentifierList[0].identifier_first_issue_dt) + "</td>";
@@ -83,7 +82,7 @@ function getDeviceListInfo(data) {
         deviceDetail = deviceDetail.replace(/"/g, "");
     }
 
-    var devieTable = "<table class='table'>" +
+    var devieTable = "<table class='table table-responsive table-bordered table-condensed'>" +
                             "<thead>" +
                                 "<tr class='active'>" +
                                     "<th>Device first issue date</th>" +

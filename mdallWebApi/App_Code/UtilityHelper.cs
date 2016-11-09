@@ -44,5 +44,18 @@ namespace MdallWebApi
             return address.ToString();
         }
 
+        public static int GetNumberTerm(string term)
+        {
+            int result;
+            bool res = int.TryParse(term, out result);
+            if (res == false)
+            {
+                return 0;
+            }
+            else
+            {
+                return result;
+            }
+        }
     }
 }

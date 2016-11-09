@@ -38,19 +38,11 @@
                 cdnEnv: "prod"
             }));
     </script>
-
+    
     <!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
     <script>dataLayer1 = [];</script>
     <!-- End Google Tag Manager -->
     <script src="./js/mdall.js"></script>
-    <!--<script>
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-             results = regex.exec(location.search);
-            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
-    </script>-->
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -75,7 +67,7 @@
     <!-- Write closure template -->
     <script type="text/javascript">
 	var defTop = document.getElementById("def-top");
-	var jsonbread = [{ title: "Home", href: "http://www.canada.ca/en/index.html" },
+	var jsonbread = [{ title: "Home", href: "http://www.canada.ca/en/index.html" }, 
         { title: "Drugs & Health Products",href: "http://www.hc-sc.gc.ca/dhp-mps/index-eng.php" },
         { title: "Medical Devices",href: "http://www.hc-sc.gc.ca/dhp-mps/md-im/index-eng.php" },
         { title: "Licences",href: "http://www.hc-sc.gc.ca/dhp-mps/md-im/licen/index-eng.php" },
@@ -87,7 +79,7 @@
 	    search: true,
 		lngLinks: [{
 			lang: "en",
-			href: "instruments-medicaux-resultat.html",
+			href: "instruments-medicaux.html",
 			text: "Français",
 		}],
 		showPreContent: true,
@@ -95,36 +87,38 @@
 	});
     </script>
 
+
     <div class="container">
         <main role="main" property="mainContentOfPage" class="container">
-            <h1 property="name" id="wb-cont">Medical devices active licences search results</h1>
-            <div class="mrgn-bttm-md">
-                <strong>Search results for: <span id="searchTerm"></span></strong>
-            </div>
-            <section class="panel panel-default">
-                <header class="panel-heading">
-                    <h2 class="panel-title"></h2>
-                    <div class="row">
-                        <h2 class="col-sm-6 mrgn-tp-sm">Company listings</h2>
-                        <div class="mrgn-tp-sm mrgn-rght-md pull-right">
-                            <a href="search-by-company.html">New search</a>
+            <div class="wb-frmvld">
+                <form name="mdall" action="medical-device-result-identifier.html" method="get" id="mdall">
+                    <h1 property="name" id="wb-cont">Medical Devices Active Licence Listing</h1>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Active device identifier search</h2>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <p class="text-right"><a href="">Archived Licence Search</a></p>
+                                <p>Enter text below to search by:</p>
+                                <p>1. Device identifier</p>
+                                
+                                <input name="term" type="text" id="term" autofocus list="list-liste" placeholder="[Enter text here to search for a device identifier.]" class="full-width" required="required">
+                                <datalist id="list-liste" data-ajax-replace=".././list-liste-eng.txt" class="wb-data-ajax-replace-inited"> </datalist>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Submit" class="btn btn-primary" />
+                                <input type="reset" value="Reset" class="btn btn-default nextBtn" />
+                            </div>
                         </div>
                     </div>
-                </header>
-                <div class="panel-body">
-                    <table id="companyTable" class="wb-tables table table-striped table-hover table-bordered">
-                        <thead>
-                            <tr class="active">
-                                <th>Company Name</th>
-                                <th>Company Address</th>
-                                <th>Company ID</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodyCompany"></tbody>
-                    </table>
-                </div>
-            </section>
-          
+                    <p>For more information on Medical Devices, click here: <a href="http://www.hc-sc.gc.ca/dhp-mps/md-im/index-eng.php">Medical Devices</a></p>
+                    <p><a href="http://api.hres.ca/mdall/medical-device-result.html?lang=en&amp;term=">List of all Medical Devices Licence Listing</a></p>
+
+                </form>
+            </div>
+
             <!-- prefooter-en.html-Start-->
             <div id="def-preFooter">
                 <link rel="import" href="./StaticFallbackFiles/gcweb/prefooter-en.html">
@@ -162,53 +156,8 @@
                     cdnEnv: "prod"
                 }));
     </script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<!--[if lt IE 10 | !IE ]><!-->
-<script src="./js/jquery.xdomainrequest.min.js"></script>
-<!--<![endif]-->
-
-<script>
-        var dtable;
-        var lang = "en";
-        var status = "active";
-        var searchTerm = getParameterByName("term");
-        var category = 1;
-              $('#searchTerm').append("'" + searchTerm + "'");
-      //  $("a#langLink").attr('href', goMdallLangUrl(lang));
-
-
-            window["wb-tables"] = {
-                "processing": true,
-                "ajax": {
-                    "url": serviceURL,
-                    "data": { lang: lang, status: status, term: searchTerm, categoryType: 1 },
-                    "dataType": "json",
-                    "dataSrc": "companyResult",
-                    "error": function (xhr, err) {
-                        //console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
-                        //console.log("responseText: " + xhr.responseText);
-                    }
-                },
-                "columns": [
-                                { "data": "company_name" },
-                                {
-
-                                    "data": null,
-                                    "render": function (data, type, full) {
-                                        return data.addr_line_1 + ' ' + data.addr_line_2 + ' ' + data.addr_line_3 + '<br>' + data.city + ', ' + data.region_cd + ', ' + data.country_cd + ', ' + data.postal_code;
-                                    }
-                                },
-                                {
-                                    "data": null,
-                                    "render": function (data, type, full) {
-                                        return '<a href=medical-device-detail.html?lang=en&id=' + data.company_id + '>' + data.company_id + '</a>';
-                                    }
-                                }
-
-                ]
-            }
-
-</script>
+    <!--[if lt IE 10 | !IE ]><!-->
+    <script src="./js/jquery.xdomainrequest.min.js"></script>
+    <!--<![endif]-->
 </body>
 </html>

@@ -9,7 +9,8 @@ namespace MdallWebApi.Models
     {
         company = 1,
         licence = 2,
-        device = 3
+        device = 3,
+        deviceIdentifier = 4
     }
 
     public class Search
@@ -23,6 +24,7 @@ namespace MdallWebApi.Models
         public string company_address { get; set; }
         public int device_id { get; set; }
         public string device_name { get; set; }
+        public string device_identifier { get; set; }
     }
 
 
@@ -31,16 +33,16 @@ namespace MdallWebApi.Models
         public int company_id { get; set; }
         public string company_name { get; set; }
         public string company_address { get; set; }
-        public IList<Licence> licenceList { get; set; }
+        public IList<LicenceDetail> licenceList { get; set; }
     }
 
     public class LicenceDetail
     {
         public Licence licence { get; set; }
-        public IList<Device> deviceList { get; set; }
+        public IList<DeviceDetail> deviceList { get; set; }
     }
 
-    public class DeviceDeteail
+    public class DeviceDetail
     {
         public Device device { get; set; }
         public IList<DeviceIdentifier> deviceIdentifierList { get; set; }

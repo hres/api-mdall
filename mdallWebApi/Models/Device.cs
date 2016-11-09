@@ -13,7 +13,7 @@ namespace MdallWebApi.Models
         public DateTime? end_date { get; set; }
         public String trade_name { get; set; }
         
-        public IList <DeviceIdentifier> deviceIdentifierList { get; set; }
+        //public IList <DeviceIdentifier> deviceIdentifierList { get; set; }
     }
 
     

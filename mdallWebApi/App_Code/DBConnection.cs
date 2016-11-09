@@ -365,18 +365,18 @@ namespace MdallWebApi
                             while (dr.Read())
                             {
                                 var item = new Device();
-                                item.deviceIdentifierList = new List<DeviceIdentifier>();
+                                //item.deviceIdentifierList = new List<DeviceIdentifier>();
                                 item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                 item.device_id = dr["DEVICE_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DEVICE_ID"]);
                                 item.device_first_issue_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.trade_name = dr["TRADE_NAME"] == DBNull.Value ? string.Empty : dr["TRADE_NAME"].ToString().Trim();
 
-                                var deviceIdentifierList = GetAllDeviceIdentifier("", 0, item.device_id);
-                                if(deviceIdentifierList != null && deviceIdentifierList.Count > 0)
-                                {
-                                    item.deviceIdentifierList = deviceIdentifierList;
-                                }
+                                //var deviceIdentifierList = GetAllDeviceIdentifier("", 0, item.device_id);
+                                //if(deviceIdentifierList != null && deviceIdentifierList.Count > 0)
+                                //{
+                                //    item.deviceIdentifierList = deviceIdentifierList;
+                                //}
                                 items.Add(item);
                             }
                         }
@@ -423,7 +423,6 @@ namespace MdallWebApi
                                 item.device_first_issue_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.trade_name = dr["TRADE_NAME"] == DBNull.Value ? string.Empty : dr["TRADE_NAME"].ToString().Trim();
-
                                 device = item;
                             }
                         }
@@ -507,9 +506,7 @@ namespace MdallWebApi
             var deviceIdentifier = new DeviceIdentifier();
             string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT WHERE DEVICE_ID = " + id;
 
-            using (
-
-                OracleConnection con = new OracleConnection(MdallDBConnection))
+            using (  OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
                 try
