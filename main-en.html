@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+        wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+    <title>Drug and Health Product Register</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <!-- Meta data -->
+    <meta name="dcterms.language" title="ISO639-2" content="eng" />
+    <meta name="dcterms.title" content="Drug and health product inspections" />
+    <meta name="description" content="Find the latest results from the Government's drug and health product inspections." />
+    <meta name="dcterms.subject" title="scheme" content="" />
+    <meta name="dcterms.creator" content="Government of Canada, Health Canada and the Public health Agency of Canada" />
+    <meta name="dcterms.contributor" content="" />
+    <meta name="dcterms.type" title="gctype" content="" />
+    <meta name="dcterms.audience" title="gcaudience" content="" />
+    <meta name="dcterms.issued" title="W3CDTF" content="2015-04-21" />
+    <meta name="dcterms.modified" title="W3CDTF" content="2016-03-18" />
+    <meta name="review_date" content="" />
+    <meta name="meta_date" content="" />
+
+    <!-- Load closure template scripts -->
+    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/soyutils.js"></script>
+    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/wet-en.js"></script>
+    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/plugins-en.js"></script>
+    <script src="scripts/google-analytics.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!--<script type="text/javascript" src="./gcweb_4.0.22/wet-en.js"></script>
+    <script type="text/javascript" src="./gcweb_4.0.22/plugins-en.js"></script>-->
+    <!-- Load closure template scripts -->
+    <noscript>
+        <link rel="import" href="./StaticFallbackFiles/gcweb/refTop.html">
+    </noscript>
+    <!-- Write closure template -->
+    <script type="text/javascript">
+            document.write(wet.builder.refTop({
+                cdnEnv: "prod"
+            }));
+    </script>
+
+    <!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
+    <script>dataLayer1 = [];</script>
+    <!-- End Google Tag Manager -->
+    <script src="./js/dhpr.js"></script>
+</head>
+
+<body vocab="http://schema.org/" typeof="WebPage">
+    <!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
+    <noscript>
+        <iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement
+
+(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})
+
+(window,document,'script','dataLayer1','GTM-TLGQ9K');
+    </script>
+    <!-- End Google Tag Manager -->
+    <div id="def-top">
+        <!-- top-en.html-Start-->
+        <link rel="import" href="./StaticFallbackFiles/gcweb/top-en.html">
+        <!-- top-en.html-End-->
+    </div>
+    <!-- Write closure template -->
+    <script type="text/javascript">
+	var defTop = document.getElementById("def-top");
+	var jsonbread = [{ title: "Home", href: "http://www.canada.ca/en/index.html" },
+        { title: "Drugs & Health Products",href: "http://www.hc-sc.gc.ca/dhp-mps/index-eng.php" },
+        { title: "Medical Devices",href: "http://www.hc-sc.gc.ca/dhp-mps/md-im/index-eng.php" },
+        { title: "Licences",href: "http://www.hc-sc.gc.ca/dhp-mps/md-im/licen/index-eng.php" },
+        { title: "Medical Devices Licence Listing Search" }];
+
+	//console.log(jsonbread);
+	defTop.outerHTML = wet.builder.top({
+	    cdnEnv: "prod",
+	    search: true,
+		lngLinks: [{
+			lang: "en",
+			href: "instruments-medicaux.html",
+			text: "Français",
+		}],
+		showPreContent: true,
+		breadcrumbs:jsonbread,
+	});
+    </script>
+
+
+    <div class="container">
+        <main role="main" property="mainContentOfPage" class="container">
+            <div class="wb-frmvld">
+                <div class="row">
+                    <div class="well nav-base">
+                        <ul class="nav nav-tabs" id="testtab">
+                            <li><a href="#home" data-toggle="tab">Search for drugs</a></li>
+                            <li><a href="https://health-products.canada.ca/lnhpd-bdpsnh/" data-toggle="tab">Search for a Natural Health Product</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Search Medical Devices&nbsp;<span class="caret"></span></a>
+                                <ul class="dropdown-menu" aria-labelledby="myTabDrop1">
+                                    <li><a href="./search-by-company.html">Search Active By Company Name or ID</a></li>
+                                    <li><a href="./search-by-licence.html">Search By Licence Name or Device Name</a></li>
+                                    <li><a href="./search-by-device.html">Search By Licence Number</a></li>
+                                    <li><a href="./search-by-device-identifier.html">Search Active By Device Identifier</a></li>
+                                    <li><a href="./search-archived-by-licence.html">Search Archived By Licence Number</a></li>
+                                    <li><a href="./search-archived-by-device.html">Search Archived By Device</a></li>
+                                    <li><a href="./search-archived-by-device-identifier.html">Search Archived By Device Identifier</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Summary Reports&nbsp;<span class="caret"></span></a>
+                                <ul class="dropdown-menu" aria-labelledby="myTabDrop2">
+                                    <li><a href="https://hpr-rps.hres.ca/reg-content/summary-safety-review.php">Summary Safety Reviews</a></li>
+                                    <li><a href="https://hpr-rps.hres.ca/reg-content/summary-basis-decision.php">Summary Basis of Decision</a></li>
+                                    <li><a href="https://hpr-rps.hres.ca/reg-content/regulatory-decision-summary.php">Regulatory Decision Summary</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">About&nbsp;<span class="caret"></span></a>
+                                <ul class="dropdown-menu" aria-labelledby="myTabDrop3">
+                                    <li><a href="https://hpr-rps.hres.ca/reg-content/summary-safety-review.php">About the Drug and Health Product Register</a></li>
+                                    <li><a href="https://hpr-rps.hres.ca/reg-content/summary-basis-decision.php">Data and summary reports</a></li>
+                                    <li><a href="https://hpr-rps.hres.ca/reg-content/regulatory-decision-summary.php">Reported side effects - disclaimers</a></li>
+                                    <li><a href="https://hpr-rps.hres.ca/reg-content/regulatory-decision-summary.php">Feedback</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- prefooter-en.html-Start-->
+            <div id="def-preFooter">
+                <link rel="import" href="./StaticFallbackFiles/gcweb/prefooter-en.html">
+            </div>
+            <!-- prefooter-en.html-End-->
+            <!-- Write closure template -->
+            <script type="text/javascript">
+                var defPreFooter = document.getElementById("def-preFooter");
+                defPreFooter.outerHTML = wet.builder.preFooter({
+                    cdnEnv: "prod",
+                    dateModified: "2016-11-07",
+                    showPostContent: true,
+                    showShare: true,
+                });
+            </script>
+        </main>
+    </div>
+
+    <!-- footer-en.html-Start-->
+    <div id="def-footer">
+        <link rel="import" href="./StaticFallbackFiles/gcweb/footer-en.html">
+    </div>
+    <!-- footer-en.html-End-->
+    <!-- Write closure template -->
+    <script type="text/javascript">
+            var defFooter = document.getElementById("def-footer");
+            defFooter.outerHTML = wet.builder.footer({
+                cdnEnv: "prod",
+                showFeatures: true,
+            });
+    </script>
+    <!-- Write closure template -->
+    <script type="text/javascript">
+                document.write(wet.builder.refFooter({
+                    cdnEnv: "prod"
+                }));
+    </script>
+    <!--[if lt IE 10 | !IE ]><!-->
+    <script src="./js/jquery.xdomainrequest.min.js"></script>
+    <!--<![endif]-->
+</body>
+</html>

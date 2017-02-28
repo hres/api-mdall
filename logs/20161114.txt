@@ -1,0 +1,11 @@
+********** 1:42:03 PM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-01033: ORACLE initialization or shutdown in progress
+Source: DbConnection.cs - GetAllLicenceCompany()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at MdallWebApi.DBConnection.GetAllCompany(String status, String companyName) in C:\WebSite\api-publish\mdall\App_Code\DBConnection.cs:line 238
+

@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+<html class="no-js" lang="fr" dir="ltr">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expÃ©rience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+    <title>Page de recherche - Registre des produits de santé</title>
+    <!-- METADATA BEGINS | DEBUT DES METADONNEES -->
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="Page de recherche initiale pour le Registre des produits de santé" />
+    <meta name="dcterms.title" content="Page de recherche - Registre des produits de santé" />
+    <meta name="dcterms.creator" content="Gouvernement du Canada, Santé Canada, Direction générale des produits de santé et des aliments" />
+    <meta name="dcterms.issued" title="W3CDTF" content="2014-10-23" />
+    <meta name="dcterms.modified" title="W3CDTF" content="2014-10-23" />
+    <meta name="dcterms.subject" title="scheme" content="Moteur de recherche pour le Registre des produits de santé" />
+    <meta name="dcterms.language" title="ISO639-2" content="fra" />
+    <!-- METADATA ENDS | FIN DES METADONNEES -->
+    <!-- Load closure tempate scripts -->
+
+    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/soyutils.js"></script>
+    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/wet-fr.js"></script>
+    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/plugins-fr.js"></script>
+    <script src="scripts/google-analytics.js"></script>
+    <!-- Load closure template scripts -->
+    <noscript>
+        <link rel="import" href="./StaticFallbackFiles/gcweb/refTop.html">
+    </noscript>
+    <!-- Write closure template -->
+    <script type="text/javascript">
+        document.write(wet.builder.refTop({
+            cdnEnv: "prod"
+        }));
+    </script>
+
+    <!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
+    <script>dataLayer1 = [];</script>
+    <!-- End Google Tag Manager -->
+    <script src="./js/mdall.js"></script>
+</head>
+
+<body vocab="http://schema.org/" typeof="WebPage">
+    <!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
+    <noscript>
+        <iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');
+    </script>
+    <!-- End Google Tag Manager -->
+    <div id="def-top">
+        <!-- top-fr.html-Start-->
+        <link rel="import" href="./StaticFallbackFiles/gcweb/top-fr.html">
+        <!-- top-fr.html-End-->
+    </div>
+    <!-- Write closure template -->
+    <script type="text/javascript">
+        var defTop = document.getElementById("def-top");
+        var searchTerm = getParameterByName("term");
+        var jsonbread = [{ title: "Accueil", href: "https://www.canada.ca/fr.html"},
+        { title: "Tous les services", href: "http://www.canada.ca/fr/services/index.html" },
+        { title: "Santé", href: "http://canadiensensante.gc.ca/index-fra.php" },
+        { title: "Médicaments et produits de santé et de consommation", href: "http://canadiensensante.gc.ca/drugs-products-medicaments-produits/index-fra.php" },
+        { title: "Recherche de produit" }];
+
+	//console.log(jsonbread);
+	defTop.outerHTML = wet.builder.top({
+	    cdnEnv: "prod",
+	    search: true,
+		lngLinks: [{
+			lang: "en",
+			href: "result-licence.html?term=" + searchTerm,
+			text: "English",
+		}],
+		showPreContent: true,
+		breadcrumbs:jsonbread,
+	});
+    </script>
+
+    <div class="container">
+        <main role="main" property="mainContentOfPage" class="container">
+            <h1 property="name" id="wb-cont">Liste des instruments médicaux homologués en vigueur</h1>
+            <div class="mrgn-bttm-md">
+                <strong>Résultat de recherche pour&nbsp;:&nbsp;<span id="searchTerm"></span></strong>
+            </div>
+            <div class="text-muted">
+                S’il-vous-plaît cliquez sur  le nom de l’homologation pour voir l’homologations en vigueur ou sur le nom de la compagnie pour voir tous ces homologations en vigueur.
+            </div>
+                <section class="panel panel-default">
+                    <header class="panel-heading">
+                        <h2 class="panel-title"></h2>
+                        <div class="row">
+                            <h2 class="col-sm-6 mrgn-tp-sm">Liste des noms d'homologation</h2>
+                            <div class="mrgn-tp-sm mrgn-rght-md pull-right">
+                                <a href="recherche-par-licence.html">Nouvelle recherche</a>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="panel-body">
+                        <table id="licenceTable" class="wb-tables table table-striped table-hover table-bordered">
+                            <thead>
+                                <tr class="active">
+                                    <th>Nom de l'homologation</th>
+                                    <th>Nom de l'entreprise</th>
+                                    <th>Adresse de l'entreprise</th>
+                            </thead>
+                            <tbody id="tbodyLicence"></tbody>
+                        </table>
+                    </div>
+                </section>
+            <!-- prefooter-fr.html-Start-->
+            <div id="def-preFooter">
+                <link rel="import" href="./StaticFallbackFiles/gcweb/prefooter-fr.html">
+            </div>
+            <!-- prefooter-en.html-End-->
+            <!-- Write closure template -->
+            <script type="text/javascript">
+                var defPreFooter = document.getElementById("def-preFooter");
+                defPreFooter.outerHTML = wet.builder.preFooter({
+                    cdnEnv: "prod",
+                    dateModified: "2016-10-19",
+                    showPostContent: true,
+                    showShare: true,
+                });
+            </script>
+        </main>
+    </div>
+
+    <!-- footer-en.html-Start-->
+    <div id="def-footer">
+        <link rel="import" href="./StaticFallbackFiles/gcweb/footer-en.html">
+    </div>
+    <!-- footer-en.html-End-->
+    <!-- Write closure template -->
+    <script type="text/javascript">
+            var defFooter = document.getElementById("def-footer");
+            defFooter.outerHTML = wet.builder.footer({
+                cdnEnv: "prod",
+                showFeatures: true,
+            });
+    </script>
+    <!-- Write closure template -->
+    <script type="text/javascript">
+                document.write(wet.builder.refFooter({
+                    cdnEnv: "prod"
+                }));
+    </script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="Scripts/datatables.js"></script>
+<!--[if lt IE 10 | !IE ]><!-->
+<script src="./js/jquery.xdomainrequest.min.js"></script>
+<!--<![endif]-->
+
+<script>
+        var dtable;
+        var lang = "en";
+        var status = "active";
+        var searchTerm = getParameterByName("term");
+        $('#searchTerm').append("'" + searchTerm + "'");
+        //$("a#langLink").attr('href', goMdallLangUrl(lang));
+
+        window["wb-tables"] = {
+                   "processing": true,
+                   "ajax": {
+                       "url": serviceURL,
+                       "data": { lang: lang, status: status, term: searchTerm, categoryType: 2 },
+                       "dataType": "json",
+                       "dataSrc": "searchResult",
+                       "error": function (xhr, err) {
+                           //console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
+                           //console.log("responseText: " + xhr.responseText);
+                       }
+                   },
+                   "columns": [
+                                   {
+                                       "data": null,
+                                       "render": function (data, type, full) {
+                                           return '<a href=instruments-medicaux-detail.html?lang=fr&id=' + data.company_id + '&licID=' + data.original_licence_no + '>' + data.licence_name + '</a>';
+                                       }
+                                   },
+                                    {
+                                        "data": null,
+                                        "render": function (data, type, full) {
+                                            return '<a href=instruments-medicaux-detail.html?lang=fr&id=' + data.company_id + '>' + data.company_name + '</a>';
+                                        }
+                                    },
+                                    { "data": "company_address" }
+
+                   ]
+               }
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+********** 8:12:20 AM **********
+Inner Exception Type: OracleInternal.Network.NetworkException
+Inner Exception: ORA-12545: Network Transport: Unable to resolve connect hostname
+Inner Source: Oracle.ManagedDataAccess
+Inner Stack Trace: 
+   at OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   at OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName)
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, String instanceName)
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-12545: Network Transport: Unable to resolve connect hostname
+Source: DbConnection.cs - GetAllLicenceCompany()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at MdallWebApi.DBConnection.GetAllCompany(String status, String companyName) in C:\Users\hcuser\Documents\MDALL\App_Code\DBConnection.cs:line 244
+
