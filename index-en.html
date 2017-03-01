@@ -44,6 +44,7 @@
     <script>dataLayer1 = [];</script>
     <!-- End Google Tag Manager -->
     <script src="./js/mdall.js"></script>
+    <script src="js/jsontocsv.js"></script>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -112,34 +113,39 @@
                                 <td>Get All Licences:</td>
                                 <td><a class="btn btn-default" href="./api-v1/licence/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/licence/?type=xml">XML</a></td>
+                                <td><input type="button" id="dlLicences" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Licence Data', './api-v1/licence/?type=json');" /></td>
                             </tr>
                             <tr>
                                 <td>Get All Company:</td>
                                 <td><a class="btn btn-default" href="./api-v1/company/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/company/?type=xml">XML</a></td>
                                 <!--<td><a class="btn btn-default" href="./api-v1/company/?type=csv" download>CSV</a></td>-->
-                                <td><input type="button" id="dlCompany"  class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Company Data', './api-v1/company/?type=json');"/></td>
+                                <td><input type="button" id="dlCompany" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Company Data', './api-v1/company/?type=json');" /></td>
 
                             </tr>
                             <tr>
                                 <td>Get All Devices:</td>
                                 <td><a class="btn btn-default" href="./api-v1/device/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/device/?type=xml">XML</a></td>
+                                <td><input type="button" id="dlDevices" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Device Data', './api-v1/device/?type=json');" /></td>
                             </tr>
                             <tr>
                                 <td>Get All Device Identifiers:</td>
                                 <td><a class="btn btn-default" href="./api-v1/deviceidentifier/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/deviceidentifier/?type=xml">XML</a></td>
+                                <td><input type="button" id="dlIdentifiers" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Device Identifiers Data', './api-v1/deviceidentifier/?type=json');" /></td>
                             </tr>
                             <tr>
                                 <td>Get All Licence Types:</td>
                                 <td><a class="btn btn-default" href="./api-v1/licencetype/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/licencetype/?type=xml">XML</a></td>
+                                <td><input type="button" id="dlLicenceType" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Licence Type Data', './api-v1/licencetype/?type=json');" /></td>
                             </tr>
                             <tr>
                                 <td>Get All SBD Location:</td>
                                 <td><a class="btn btn-default" href="./api-v1/sbdlocation/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/sbdlocation/?type=xml">XML</a></td>
+                                <td><input type="button" id="dlSBD" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('SBD Location Data', './api-v1/sbdlocation/?type=json');" /></td>
                             </tr>
                         </tbody>
                     </table>
@@ -189,53 +195,4 @@
     <!--<![endif]-->
 </body>
 
-
 </html>
-
-<script>
-
-    
-    function JSONtoCSV(fileName, url)
-    {
-        var json = $.getJSON(url, function (data) {
-
-        });
-        
-       var arrData = typeof json != 'object' ? JSON.parse(json) : json;
-        //originally this statement used ? JSON.parse(json.data) : json.data;
-        //which resulted in arrData.length being unreadable
-        //after removing '.data' from both json references,
-        //the file downloads into a .csv with only 1 cell of data
-        // {"readyState":1}
-        //which suggests that the HTTP request was successful, however the parse was not
-
-
-       for (var j = 0; j < arrData.length; j++) {
-            
-            for (var key in arrData[j]) {
-                if (key == 'date_decision') {
-                    arrData[j][key] = formatedDate(arrData[j][key]);
-                }
-            }
-        }
-        
-        if (window.navigator.msSaveBlob) {
-            event.preventDefault();
-            var blob = new Blob([JSON.stringify(arrData)], { type: 'application/json' });
-            navigator.msSaveOrOpenBlob(blob, 'rdsResult.json');
-
-        } else {
-            $("<a />", {
-                "download": fileName+".csv",
-                "href": "data:application/json," + encodeURIComponent(JSON.stringify(arrData))
-            }).appendTo("body")
-       .click(function () {
-           $(this).remove()
-       })[0].click()
-        }
-
-    }
-    
-    
-    
-</script>

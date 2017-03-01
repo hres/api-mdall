@@ -406,6 +406,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="js\jquery.xdomainrequest.min.js" />
+    <Content Include="js\JSONtoCSV.js" />
     <Content Include="js\mdall.js" />
     <Content Include="Libraries\GoC.WebTemplateMVC.dll" />
     <Content Include="Libraries\WebTemplateCore.dll" />

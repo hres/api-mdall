@@ -142,3 +142,10 @@ C:\Workspace_API\api-mdall-fromserver\api-mdall-fromserver\mdall\bin\MdallWebApi
 C:\Workspace_API\api-mdall-fromserver\api-mdall-fromserver\mdall\obj\Debug\MdallWebApi.csprojResolveAssemblyReference.cache
 C:\Workspace_API\api-mdall-fromserver\api-mdall-fromserver\mdall\obj\Debug\MdallWebApi.dll
 C:\Workspace_API\api-mdall-fromserver\api-mdall-fromserver\mdall\obj\Debug\MdallWebApi.pdb
+C:\Workspace_API\api-mdall\bin\ApplicationInsights.config
+C:\Workspace_API\api-mdall\bin\MdallWebApi.dll.config
+C:\Workspace_API\api-mdall\bin\MdallWebApi.dll
+C:\Workspace_API\api-mdall\bin\MdallWebApi.pdb
+C:\Workspace_API\api-mdall\obj\Debug\MdallWebApi.csprojResolveAssemblyReference.cache
+C:\Workspace_API\api-mdall\obj\Debug\MdallWebApi.dll
+C:\Workspace_API\api-mdall\obj\Debug\MdallWebApi.pdb
