@@ -54,10 +54,14 @@ function csvPackage(fileName, url)
 {
     var zip = new JSZip();
     
+    var zipName = "";
+
     var completedFiles = 0; 
 
     $.each(url, function (j) {
 
+        zipName += fileName[j] + ", ";
+        
         $.getJSON(url[j], function (json) {
 
             var row = "";
@@ -101,13 +105,20 @@ function csvPackage(fileName, url)
             completedFiles++;
 
             if (completedFiles == url.length) {
+
+                zipName = zipName.slice(0, (zipName.length -2));
+                zipName += " Data";
+
                 zip.generateAsync({
                     type: "blob"
                 }).then(function (content) {
-                    saveAs(content, fileName+".zip");
+                    saveAs(content, zipName + ".zip");
                     //window.location.href = "data:application/zip;base64," + content;
                 });
+
             }
+
+
 
         });
     }); //end .each();
