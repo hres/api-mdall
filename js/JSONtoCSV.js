@@ -1,4 +1,4 @@
-/*
+
 function JSONtoCSV(fileName, url) {
 
     var json = $.getJSON(url, function (json) {
@@ -48,7 +48,7 @@ function JSONtoCSV(fileName, url) {
 
 
 }
-*/
+
 
 function csvPackage(fileName, url)
 {
