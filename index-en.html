@@ -44,6 +44,8 @@
     <script>dataLayer1 = [];</script>
     <!-- End Google Tag Manager -->
     <script src="./js/mdall.js"></script>
+    <script src="./Scripts/Stuk-jszip-5250332/dist/jszip.js"></script>
+    <script src="./Scripts/Stuk-jszip-5250332/vendor/FileSaver.js"></script>
     <script src="js/jsontocsv.js"></script>
 </head>
 
@@ -113,39 +115,39 @@
                                 <td>Get All Licences:</td>
                                 <td><a class="btn btn-default" href="./api-v1/licence/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/licence/?type=xml">XML</a></td>
-                                <td><input type="button" id="dlLicences" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Licence Data', './api-v1/licence/?type=json');" /></td>
+                                <td><input type="button" id="dlLicences" class="btn btn-default" value="CSV (Download)" onclick="csvPackage(['Licence Data'], ['./api-v1/licence/?type=json']);" /></td>
                             </tr>
                             <tr>
                                 <td>Get All Company:</td>
                                 <td><a class="btn btn-default" href="./api-v1/company/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/company/?type=xml">XML</a></td>
                                 <!--<td><a class="btn btn-default" href="./api-v1/company/?type=csv" download>CSV</a></td>-->
-                                <td><input type="button" id="dlCompany" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Company Data', './api-v1/company/?type=json');" /></td>
+                                <td><input type="button" id="dlCompany" class="btn btn-default" value="CSV (Download)" onclick="csvPackage(['Company Data'], ['./api-v1/company/?type=json']);" /></td>
 
                             </tr>
                             <tr>
                                 <td>Get All Devices:</td>
                                 <td><a class="btn btn-default" href="./api-v1/device/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/device/?type=xml">XML</a></td>
-                                <td><input type="button" id="dlDevices" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Device Data', './api-v1/device/?type=json');" /></td>
+                                <td><input type="button" id="dlDevices" class="btn btn-default" value="CSV (Download)" onclick="csvPackage(['Device Data'], ['./api-v1/device/?type=json']);" /></td>
                             </tr>
                             <tr>
                                 <td>Get All Device Identifiers:</td>
                                 <td><a class="btn btn-default" href="./api-v1/deviceidentifier/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/deviceidentifier/?type=xml">XML</a></td>
-                                <td><input type="button" id="dlIdentifiers" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Device Identifiers Data', './api-v1/deviceidentifier/?type=json');" /></td>
+                                <td><input type="button" id="dlIdentifiers" class="btn btn-default" value="CSV (Download)" onclick="csvPackage(['Device Identifiers Data'], ['./api-v1/deviceidentifier/?type=json']);" /></td>
                             </tr>
                             <tr>
                                 <td>Get All Licence Types:</td>
                                 <td><a class="btn btn-default" href="./api-v1/licencetype/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/licencetype/?type=xml">XML</a></td>
-                                <td><input type="button" id="dlLicenceType" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('Licence Type Data', './api-v1/licencetype/?type=json');" /></td>
+                                <td><input type="button" id="dlLicenceType" class="btn btn-default" value="CSV (Download)" onclick="csvPackage(['Licence Type Data'], ['./api-v1/licencetype/?type=json']);" /></td>
                             </tr>
                             <tr>
                                 <td>Get All SBD Location:</td>
                                 <td><a class="btn btn-default" href="./api-v1/sbdlocation/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api-v1/sbdlocation/?type=xml">XML</a></td>
-                                <td><input type="button" id="dlSBD" class="btn btn-default" value="CSV (Download)" onclick="JSONtoCSV('SBD Location Data', './api-v1/sbdlocation/?type=json');" /></td>
+                                <td><input type="button" id="dlSBD" class="btn btn-default" value="CSV (Download)" onclick="csvPackage(['SBD Location Data'], ['./api-v1/sbdlocation/?type=json']);" /></td>
                             </tr>
                         </tbody>
                     </table>

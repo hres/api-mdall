@@ -9839,6 +9839,18 @@
 	 * time.
 	 *  @namespace
 	 */
+
+	var thisURL = window.location.toString();
+	var all;
+	if (thisURL.indexOf("resultat") != -1)
+	{
+	    all = "tout";
+	}
+	else
+	{
+	    all = "All";
+	}
+
 	DataTable.defaults = {
 	    /**
 		 * An array of data to use for the table, passed in at initialisation which
@@ -10135,7 +10147,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"aLengthMenu": [[ 10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+		"aLengthMenu": [[ 10, 25, 50, 100, -1], [10, 25, 50, 100, all]],
 	
 	
 		/**
