@@ -53,8 +53,6 @@ function JSONtoCSV(fileName, url) {
             alert("Your Browser does not support that feature.");
         }
     });
-    
-
 }
 
 

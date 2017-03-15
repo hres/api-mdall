@@ -1166,6 +1166,7 @@ namespace MdallWebApi
                                 item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                 item.sbd_notice_web_loc = dr["SBD_NOTICE_WEB_LOC"] == DBNull.Value ? string.Empty : dr["SBD_NOTICE_WEB_LOC"].ToString().Trim();
                                 item.sbd_web_loc = dr["SBD_WEB_LOC"] == DBNull.Value ? string.Empty : dr["SBD_WEB_LOC"].ToString().Trim();
+                                /*
                                 item.pkg_insert1_keyword = dr["PKG_INSERT1_KEYWORD"] == DBNull.Value ? string.Empty : dr["PKG_INSERT1_KEYWORD"].ToString().Trim();
                                 item.pkg_insert1_loc = dr["PKG_INSERT1_LOC"] == DBNull.Value ? string.Empty : dr["PKG_INSERT1_LOC"].ToString().Trim();
                                 item.pkg_insert2_keyword = dr["PKG_INSERT2_KEYWORD"] == DBNull.Value ? string.Empty : dr["PKG_INSERT2_KEYWORD"].ToString().Trim();
@@ -1179,6 +1180,7 @@ namespace MdallWebApi
                                 item.op_manual3_keyword = dr["OP_MANUAL3_KEYWORD"] == DBNull.Value ? string.Empty : dr["OP_MANUAL3_KEYWORD"].ToString().Trim();
                                 item.op_manual3_loc = dr["OP_MANUAL3_LOC"] == DBNull.Value ? string.Empty : dr["OP_MANUAL3_LOC"].ToString().Trim();
                                 item.additional_op_pkg = dr["ADDITIONAL_OP_PKG"] == DBNull.Value ? string.Empty : dr["ADDITIONAL_OP_PKG"].ToString().Trim();
+                                */
 
                                 items.Add(item);
                             }
@@ -1222,6 +1224,7 @@ namespace MdallWebApi
                                 item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                 item.sbd_notice_web_loc = dr["SBD_NOTICE_WEB_LOC"] == DBNull.Value ? string.Empty : dr["SBD_NOTICE_WEB_LOC"].ToString().Trim();
                                 item.sbd_web_loc = dr["SBD_WEB_LOC"] == DBNull.Value ? string.Empty : dr["SBD_WEB_LOC"].ToString().Trim();
+                                /*
                                 item.pkg_insert1_keyword = dr["PKG_INSERT1_KEYWORD"] == DBNull.Value ? string.Empty : dr["PKG_INSERT1_KEYWORD"].ToString().Trim();
                                 item.pkg_insert1_loc = dr["PKG_INSERT1_LOC"] == DBNull.Value ? string.Empty : dr["PKG_INSERT1_LOC"].ToString().Trim();
                                 item.pkg_insert2_keyword = dr["PKG_INSERT2_KEYWORD"] == DBNull.Value ? string.Empty : dr["PKG_INSERT2_KEYWORD"].ToString().Trim();
@@ -1235,7 +1238,7 @@ namespace MdallWebApi
                                 item.op_manual3_keyword = dr["OP_MANUAL3_KEYWORD"] == DBNull.Value ? string.Empty : dr["OP_MANUAL3_KEYWORD"].ToString().Trim();
                                 item.op_manual3_loc = dr["OP_MANUAL3_LOC"] == DBNull.Value ? string.Empty : dr["OP_MANUAL3_LOC"].ToString().Trim();
                                 item.additional_op_pkg = dr["ADDITIONAL_OP_PKG"] == DBNull.Value ? string.Empty : dr["ADDITIONAL_OP_PKG"].ToString().Trim();
-
+                                */
                                 sbdLocationInfo = item;
                             }
                         }
