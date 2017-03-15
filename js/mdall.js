@@ -24,7 +24,6 @@ function getDeviceListInfo(data, status, lang) {
         return "";
     }
 
-    
     var deviceDetail = "";
 
     var txt = "";
@@ -145,7 +144,8 @@ function getDeviceListInfo(data, status, lang) {
     }
 
     if (lang == "en")
-        {
+    {
+
             var devieTable = "<table class='table table-responsive table-bordered table-condensed'>" +
                                     "<thead>" +
                                         "<tr class='active'>" +
