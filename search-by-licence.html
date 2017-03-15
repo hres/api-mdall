@@ -104,7 +104,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <input type="button" id="dlLicences" class="btn btn-default" value="CSV (Download)" onclick="csvPackage(['Company', 'Device', 'Licence Type'], ['http://localhost:51195/api-v1/company/?type=json', 'http://localhost:51195/api-v1/device/?type=json', 'http://localhost:51195/api-v1/licencetype/?type=json']);" />
+                                <input type="button" id="csvPkg" class="btn btn-default" value="CSV (Download)" onclick="csvPackage(['Company', 'Device', 'Licence Type'], ['http://localhost:51195/api-v1/company/?type=json', 'http://localhost:51195/api-v1/device/?type=json', 'http://localhost:51195/api-v1/licencetype/?type=json']);" />
                                 <p class="text-right"><a href="search-archived-by-licence.html">Archived Licence Search</a></p>
                                 <p>Enter text below to search by:</p>
                                 <p>1. Licence name</p>
@@ -117,7 +117,9 @@
                             <div class="form-group">
                                 <input type="submit" value="Submit" class="btn btn-primary" />
                                 <input type="reset" value="Reset" class="btn btn-default nextBtn" />
+
                             </div>
+                            
                         </div>
                     </div>
                     <p>For more information on Medical Devices, click here: <a href="http://www.hc-sc.gc.ca/dhp-mps/md-im/index-eng.php">Medical Devices</a></p>

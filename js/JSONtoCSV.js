@@ -7,7 +7,6 @@ function JSONtoCSV(fileName, url) {
         var csv = '';
         
         var arrData = typeof json != 'object' ? JSON.parse(json) : json;
-
         
 
         //extract the first row of data as headers
@@ -29,23 +28,32 @@ function JSONtoCSV(fileName, url) {
             csv += row + '\r\n';                               //add it to the CSV string
         }
 
-        
-
         blob = new Blob([csv], { type: 'text/csv' });
 
         var csvUrl = window.URL.createObjectURL(blob);
 
-        
+        if ( (!!document.documentMode == true)) //IF IE > 10
+        {
+            navigator.msSaveBlob(blob, fileName + '.csv');
+        }
+   
+        else if (navigator.userAgent.indexOf("Chrome") != -1 || navigator.userAgent.indexOf("Firefox") != -1 || navigator.userAgent.indexOf("Opera") != -1 || navigator.userAgent.indexOf('OPR') != -1)
+        {
 
-        $("<a />", {
-            "download": fileName + '.csv',
-            "href": csvUrl,
-        }).appendTo("body")     //create, append and remove a download link
-                        .click(function () {
-                            $(this).remove()
-                        })[0].click()
+            $("<a />", {
+                "download": fileName + '.csv',
+                "href": csvUrl,
+            }).appendTo("body")     //create, append and remove a download link
+                            .click(function (e) {
+                                $(this).remove()
+                            })[0].click()
+        }
+        else
+        {
+            alert("Your Browser does not support that feature.");
+        }
     });
-
+    
 
 }
 
@@ -117,9 +125,6 @@ function csvPackage(fileName, url)
                 });
 
             }
-
-
-
         });
     }); //end .each();
 
