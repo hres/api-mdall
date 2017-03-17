@@ -13,7 +13,6 @@ namespace MdallWebApi.Controllers
 
         public IEnumerable<DeviceIdentifier> GetAllDeviceIdentifier(string status, string device_identifier = "", int licence_id = 0, int device_id = 0)
         {
-
             return databasePlaceholder.GetAll(status, device_identifier, licence_id, device_id);
         }
 

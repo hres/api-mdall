@@ -104,7 +104,6 @@ function csvPackage(fileName, url)
             {
                 console.log("Could not download " + fileName[j]);
                 completedFiles++;
-                return;
             })
 
             .done(function () {
