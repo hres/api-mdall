@@ -20,9 +20,11 @@ function OnFail(result) {
 
 
 function getDeviceListInfo(data, status, lang) {
+
     if (data.length == 0) {
         return "";
     }
+
 
     var deviceDetail = "";
 
@@ -145,8 +147,7 @@ function getDeviceListInfo(data, status, lang) {
 
     if (lang == "en")
     {
-
-            var devieTable = "<table class='table table-responsive table-bordered table-condensed'>" +
+        var devieTable = "<table class='table table-responsive table-bordered table-condensed'>" +
                                     "<thead>" +
                                         "<tr class='active'>" +
                                             "<th>Device first issue date</th>";
@@ -167,7 +168,8 @@ function getDeviceListInfo(data, status, lang) {
                                 "</table>";
          }
     else {
-                var devieTable = "<table class='table table-responsive table-bordered table-condensed'>" +
+
+        var devieTable = "<table class='table table-responsive table-bordered table-condensed'>" +
                                     "<thead>" +
                                         "<tr class='active'>" +
                                             "<th>Première date de délivrance de l'instrument</th>";
@@ -189,9 +191,6 @@ function getDeviceListInfo(data, status, lang) {
     console.log(devieTable);
     return devieTable;
 }
-
-
-
 
 function formatedAddress(data) {
     var address;
@@ -262,7 +261,7 @@ function formatedOrderedList(data) {
     if (list != '') {
         list = list.replace("undefined", "");
         list = list.replace(/"/g, "");
-        return "<ul>" + list + "</ul>";;
+        return "<ul>" + list + "</ul>";
     }
     return "";
 }

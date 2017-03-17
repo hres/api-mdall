@@ -93,17 +93,22 @@
         <main role="main" property="mainContentOfPage" class="container">
             <div class="wb-frmvld">
                 <form name="mdall" action="result-archived-device.html" method="get" id="mdall">
-                    <h1 property="name" id="wb-cont">Medical devices archived licences search</h1>
+                    <h1 property="name" id="wb-cont">Medical Devices ArchivedDevices Search</h1>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h2 class="panel-title">Archived device search</h2>
+                            <div class="row">
+                                <h2 class="col-sm-6 mrgn-tp-sm">Archived device search</h2>
+                                <div class="mrgn-tp-sm mrgn-rght-md pull-right">
+                                    <a href="main-en.html">Main search</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <p class="text-right"><a href="search-by-device.html">Active Licence Search</a></p>
+                                <p class="text-right"><a href="search-by-device.html">Active Device Search</a></p>
                                 <p>Enter text below to search by:</p>
                                 <p>1. Device name</p>
-                               
+
                                 <input name="term" type="text" id="term" autofocus list="list-liste" placeholder="[Enter text here to search for a device name.]" class="full-width" required="required">
                                 <datalist id="list-liste" data-ajax-replace=".././list-liste-eng.txt" class="wb-data-ajax-replace-inited"> </datalist>
                             </div>
