@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using MdallWebApi.Models;
-
 namespace MdallWebApi.Controllers
 {
     public class DeviceIdentifierController : ApiController

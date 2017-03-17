@@ -104,25 +104,28 @@ function csvPackage(fileName, url)
             {
                 console.log("Could not download " + fileName[j]);
                 completedFiles++;
+                return;
             })
 
             .done(function () {
 
-            completedFiles++;
+                console.log("Finished downloading " + fileName[j]);
 
-            if (completedFiles == url.length) {
+                completedFiles++;
 
-                zipName = zipName.slice(0, (zipName.length -2));
-                zipName += " Data";
+                if (completedFiles == url.length) {
 
-                zip.generateAsync({
-                    type: "blob"
-                }).then(function (content) {
-                    saveAs(content, zipName + ".zip");
-                    //window.location.href = "data:application/zip;base64," + content;
-                });
+                    zipName = zipName.slice(0, (zipName.length -2));
+                    zipName += " Data";
 
-            }
+                    zip.generateAsync({
+                        type: "blob"
+                    }).then(function (content) {
+                        saveAs(content, zipName + ".zip");
+                        //window.location.href = "data:application/zip;base64," + content;
+                    });
+
+                }
         });
     }); //end .each();
 

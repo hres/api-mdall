@@ -13,10 +13,8 @@ namespace MdallWebApi.Controllers
 
         public IEnumerable<Company> GetAllCompany(string status = "", string company_name = "")
         {
-
             return databasePlaceholder.GetAll(status, company_name);
         }
-
 
         public Company GetCompanyById( int id, string lang, string status = "")
         {
