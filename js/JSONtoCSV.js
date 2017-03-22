@@ -58,17 +58,22 @@ function JSONtoCSV(fileName, url) {
 
 function csvPackage(fileName, url)
 {
+       
+    document.getElementById("csvPkg").value = "Downloading...";
+
     var zip = new JSZip();
     
     var zipName = "";
 
-    var completedFiles = 0; 
+    var completedFiles = 0;
 
     $.each(url, function (j) {
 
         zipName += fileName[j] + ", ";
         
         $.getJSON(url[j], function (json) {
+
+            document.getElementById("csvPkg").value = "Downloading " + (completedFiles + 1) + "/4";
 
             var row = "";
             var csv = '';
@@ -113,6 +118,8 @@ function csvPackage(fileName, url)
                 completedFiles++;
 
                 if (completedFiles == url.length) {
+
+                    document.getElementById("csvPkg").value = "Download Complete"
 
                     zipName = zipName.slice(0, (zipName.length -2));
                     zipName += " Data";
