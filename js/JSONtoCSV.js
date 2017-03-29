@@ -59,7 +59,7 @@ function JSONtoCSV(fileName, url) {
 function csvPackage(fileName, url)
 {
        
-    document.getElementById("csvPkg").value = "Downloading...";
+    document.getElementById("csvPkg").value = "Preparing download...";
 
     var zip = new JSZip();
     
@@ -69,11 +69,11 @@ function csvPackage(fileName, url)
 
     $.each(url, function (j) {
 
-        zipName += fileName[j] + ", ";
-        
         $.getJSON(url[j], function (json) {
 
-            document.getElementById("csvPkg").value = "Downloading " + (completedFiles + 1) + "/4";
+            zipName += fileName[j] + ", ";
+
+            document.getElementById("csvPkg").value = "Downloading file" + (completedFiles + 1) + "of 4";
 
             var row = "";
             var csv = '';
@@ -105,8 +105,7 @@ function csvPackage(fileName, url)
             zip.file(fileName[j] + ".csv", blob);
 
         })
-            .error(function()
-            {
+            .error(function () {
                 console.log("Could not download " + fileName[j]);
                 completedFiles++;
             })
@@ -121,7 +120,7 @@ function csvPackage(fileName, url)
 
                     document.getElementById("csvPkg").value = "Download Complete"
 
-                    zipName = zipName.slice(0, (zipName.length -2));
+                    zipName = zipName.slice(0, (zipName.length - 2));
                     zipName += " Data";
 
                     zip.generateAsync({
@@ -132,7 +131,7 @@ function csvPackage(fileName, url)
                     });
 
                 }
-        });
+            });
     }); //end .each();
 
 }
