@@ -172,45 +172,73 @@
 <!--<![endif]-->
 
 <script>
-        var dtable;
-        var lang = "en";
-        var status = "active";
-        var searchTerm = getParameterByName("term");
-        $('#searchTerm').append("'" + searchTerm + "'");
-        //$("a#langLink").attr('href', goMdallLangUrl(lang));
 
-      
+    
+    var dtable;
+    var lang = "en";
+    var status = "active";
+    var searchTerm = getParameterByName("term");
+    $('#searchTerm').append("'" + searchTerm + "'");
+    //$("a#langLink").attr('href', goMdallLangUrl(lang));
+
+    var jsStart = new Date(Date.now());
+    //console.log("JavaScript  start time: " + jsStart);
         
-        window["wb-tables"] = {                
-                   "processing": true,
-                   "ajax": {
-                       "url": serviceURL,
-                       "data": { lang: lang, status: status, term: searchTerm, categoryType: 2 },
-                       "dataType": "json",
-                       "dataSrc": "searchResult",
-                       "error": function (xhr, err) {
-                           //console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
-                           //console.log("responseText: " + xhr.responseText);
-                       }
-                   },
-                   "columns": [
-                                   {
-                                       "data": null,
-                                       "render": function (data, type, full) {
-                                           return '<a href=medical-device-detail.html?lang=en&id=' + data.company_id + '&licID=' + data.original_licence_no + '>' + data.licence_name + '</a>';
-                                       }
-                                   },
-                                    {
-                                        "data": null,
-                                        "render": function (data, type, full) {
-                                            return '<a href=medical-device-detail.html?lang=en&id=' + data.company_id + '>' + data.company_name + '</a>';
-                                        }
-                                    },
-                                    { "data": "company_address" }
+    var ajaxSent;
+    var ajaxSuccess;
 
-                   ]
-        }
+
+    window["wb-tables"] = {                
+                "processing": true,
+                "ajax": {
+                    "url": serviceURL,
+                    "data": { lang: lang, status: status, term: searchTerm, categoryType: 2 },
+                    "dataType": "json",
+                    "dataSrc": "searchResult",
+                    /*
+                    "error": function (xhr, err) {
+                        console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
+                        console.log("responseText: " + xhr.responseText);
+                    }*/
+                },
+                "columns": [
+                                {
+                                    "data": null,
+                                    "render": function (data, type, full) {
+                                        return '<a href=medical-device-detail.html?lang=en&id=' + data.company_id + '&licID=' + data.original_licence_no + '>' + data.licence_name + '</a>';
+                                    }
+                                },
+                                {
+                                    "data": null,
+                                    "render": function (data, type, full) {
+                                        return '<a href=medical-device-detail.html?lang=en&id=' + data.company_id + '>' + data.company_name + '</a>';
+                                    }
+                                },
+                                { "data": "company_address" }
+
+                ],
+                "fnInitComplete": function () {
+                    /*
+                    ajaxSuccess = new Date(Date.now());
+                    console.log("AJAX Request succesful: " + ajaxSuccess);
+                    console.log("AJAX Request time: " + (ajaxSuccess.getTime() - jsStart.getTime()) / 1000);
+                    timeDifference(jsStart);
+                    */
+        },
+    }
+
+
+    function timeDifference(start) {
+
+        var end = new Date(Date.now());
+        console.log("Start time: " + start);
+        console.log("End time: " + end);
+        console.log("Total Time: " + (end.getTime() - start.getTime()) / 1000);
+
+    }
+
 
 </script>
+
 </body>
 </html>

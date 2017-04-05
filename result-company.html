@@ -183,6 +183,8 @@
               $('#searchTerm').append("'" + searchTerm + "'");
       //  $("a#langLink").attr('href', goMdallLangUrl(lang));
 
+            var start = new Date(Date.now());
+            //console.log(start.getTime());
 
             window["wb-tables"] = {
                 "processing": true,
@@ -212,7 +214,18 @@
                                     }
                                 }
 
-                ]
+                ],
+                "fnInitComplete": function () {
+                  //  timeDifference(start);
+                },
+            }
+
+            function timeDifference(start) {
+
+                var end = new Date(Date.now());
+                console.log(end.getTime());
+                console.log((end.getTime() - start.getTime()) / 1000);
+
             }
 
 </script>
