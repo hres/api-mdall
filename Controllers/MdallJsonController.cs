@@ -33,7 +33,7 @@ namespace MdallWebApi.Controllers
                         company = companyController.GetCompanyById(numberTerm, lang, status) ;
                         if (company.company_id != 0)
                         {
-                        companyResult.Add(companyController.GetCompanyById(numberTerm, lang,status));
+                            companyResult.Add(companyController.GetCompanyById(numberTerm, lang,status));
                         }
                     }
                     else
