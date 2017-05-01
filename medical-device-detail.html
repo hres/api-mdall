@@ -192,6 +192,9 @@
                 },
             },
             "initComplete": function (settings, json) {
+
+                console.log(json.data);
+
                 if ($.trim(json.data.company_id) == 0) {
                    // alert("error");
                 }

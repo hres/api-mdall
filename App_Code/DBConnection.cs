@@ -97,7 +97,7 @@ namespace MdallWebApi
                                     item.sbd_location = location.sbd_web_loc;
                                 }
                                 items.Add(item);
-                                System.Diagnostics.Debug.WriteLine("Record #" + items.Count + " at " + DateTime.Now);
+                                //System.Diagnostics.Debug.WriteLine("Record #" + items.Count + " at " + DateTime.Now);
                             }
                         }
 

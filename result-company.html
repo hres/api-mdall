@@ -175,58 +175,58 @@
 <!--<![endif]-->
 
 <script>
-        var dtable;
-        var lang = "en";
-        var status = "active";
-        var searchTerm = getParameterByName("term");
-        var category = 1;
-              $('#searchTerm').append("'" + searchTerm + "'");
-      //  $("a#langLink").attr('href', goMdallLangUrl(lang));
+    var dtable;
+    var lang = "en";
+    var status = "active";
+    var searchTerm = getParameterByName("term");
+    var category = 1;
+   
+    $('#searchTerm').append("'" + searchTerm + "'");
+    //  $("a#langLink").attr('href', goMdallLangUrl(lang));
+    console.log(serviceURL);
+    console.log(new Date(Date.now()));
+        var start = new Date(Date.now());
+        //console.log(start.getTime());
+  
+        window["wb-tables"] = {
+            "processing": true,
+            "ajax": {
+                "url": serviceURL,
+                "data": { lang: lang, status: status, term: searchTerm, categoryType: 1 },
+                "dataType": "json",
+                "dataSrc": "companyResult",
+                "error": function (xhr, err) {
+                    //console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
+                    //console.log("responseText: " + xhr.responseText);
+                }
+            },
+            "columns": [
+                            { "data": "company_name" },
+                            {
 
-            var start = new Date(Date.now());
-            //console.log(start.getTime());
-
-            window["wb-tables"] = {
-                "processing": true,
-                "ajax": {
-                    "url": serviceURL,
-                    "data": { lang: lang, status: status, term: searchTerm, categoryType: 1 },
-                    "dataType": "json",
-                    "dataSrc": "companyResult",
-                    "error": function (xhr, err) {
-                        //console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
-                        //console.log("responseText: " + xhr.responseText);
-                    }
-                },
-                "columns": [
-                                { "data": "company_name" },
-                                {
-
-                                    "data": null,
-                                    "render": function (data, type, full) {
-                                        return data.addr_line_1 + ' ' + data.addr_line_2 + ' ' + data.addr_line_3 + '<br>' + data.city + ', ' + data.region_cd + ', ' + data.country_cd + ', ' + data.postal_code;
-                                    }
-                                },
-                                {
-                                    "data": null,
-                                    "render": function (data, type, full) {
-                                        return '<a href=medical-device-detail.html?lang=en&id=' + data.company_id + '>' + data.company_id + '</a>';
-                                    }
+                                "data": null,
+                                "render": function (data, type, full) {
+                                    return data.addr_line_1 + ' ' + data.addr_line_2 + ' ' + data.addr_line_3 + '<br>' + data.city + ', ' + data.region_cd + ', ' + data.country_cd + ', ' + data.postal_code;
                                 }
+                            },
+                            {
+                                "data": null,
+                                "render": function (data, type, full) {
+                                    return '<a href=medical-device-detail.html?lang=en&id=' + data.company_id + '>' + data.company_id + '</a>';
+                                }
+                            }
 
-                ],
-                "fnInitComplete": function () {
-                  //  timeDifference(start);
-                },
-            }
-
-            function timeDifference(start) {
-
-                var end = new Date(Date.now());
-                console.log(end.getTime());
-                console.log((end.getTime() - start.getTime()) / 1000);
-
-            }
+            ],
+            "fnInitComplete": function () {
+                //  timeDifference(start);
+            },
+        }
+        
+        function timeDifference(start) {
+            var end = new Date(Date.now());
+            console.log(end.getTime());
+            console.log((end.getTime() - start.getTime()) / 1000);
+        }
 
 </script>
 </body>
