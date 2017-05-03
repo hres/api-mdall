@@ -177,16 +177,13 @@
 <script>
     var dtable;
     var lang = "en";
-    var status = "active";
+    var status = "active";  
     var searchTerm = getParameterByName("term");
     var category = 1;
-   
+
     $('#searchTerm').append("'" + searchTerm + "'");
     //  $("a#langLink").attr('href', goMdallLangUrl(lang));
-    console.log(serviceURL);
-    console.log(new Date(Date.now()));
-        var start = new Date(Date.now());
-        //console.log(start.getTime());
+        //var start = new Date(Date.now());
   
         window["wb-tables"] = {
             "processing": true,
@@ -217,8 +214,15 @@
                             }
 
             ],
-            "fnInitComplete": function () {
-                //  timeDifference(start);
+            "fnInitComplete": function (companyResult) {
+
+                //console.log(companyResult.companyResult[0].company_id);
+                /*
+                if(companyResult.aoData.length == 1)
+                {
+                    //window.location.href = "medical-device-detail.html?lang=en&id=" + companyResult.json.companyResult[0].company_id;
+                }
+                */
             },
         }
         

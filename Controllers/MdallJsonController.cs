@@ -18,11 +18,11 @@ namespace MdallWebApi.Controllers
             var searchResult = new List<Search>();
             var companyController = new CompanyController();
             var numberTerm = 0;
+
             if (!string.IsNullOrWhiteSpace(term))
             {
                 numberTerm = UtilityHelper.GetNumberTerm(term);
             }
-
             switch (categoryType)
             {
                 case (int)category.company:
@@ -40,7 +40,9 @@ namespace MdallWebApi.Controllers
                     {
                         companyResult = companyController.GetAllCompany(status, term).ToList();
                     }
+                   
                     return Json(new { companyResult }, JsonRequestBehavior.AllowGet);
+
                 case (int)category.licence:
                     var licenceController = new LicenceController();
                     var licenceResult = new List<Licence>();
@@ -165,6 +167,7 @@ namespace MdallWebApi.Controllers
                     }
                     return Json(new { searchResult }, JsonRequestBehavior.AllowGet);
             }
+            
             return  Json(new { companyResult }, JsonRequestBehavior.AllowGet);
         }
 
@@ -252,8 +255,6 @@ namespace MdallWebApi.Controllers
                              archivedLicenceDetail.licence = licenceController.GetLicenceById(device.original_licence_no, "archived");
                         }
 
-                   
-                    
                     archivedLicenceDetail.deviceList = new List<DeviceDetail>();
                     archivedLicenceDetail.deviceList.Add(deviceDetail);
 

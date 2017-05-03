@@ -17,8 +17,6 @@ function OnFail(result) {
     window.location.href = "./genericError.html";
 }
 
-
-
 function getDeviceListInfo(data, status, lang) {
 
     if (data.length == 0) {
@@ -31,7 +29,6 @@ function getDeviceListInfo(data, status, lang) {
     var txt = "";
     var i;
     for (i = 0; i < data.length; i++) {
-        //console.log("deviceIdentifierList" + i + ":" + data[i].deviceIdentifierList.length);
         if (data[i].deviceIdentifierList.length == 1) {
 
           
@@ -78,10 +75,8 @@ function getDeviceListInfo(data, status, lang) {
         }
         else
         {
-            //console.log("Im here" + i + ":" + data[i].deviceIdentifierList);
             $.each(data[i].deviceIdentifierList, function (index, record) {
                 if (index == 0) {
-                    console.log("Im here index =" + index);
                     if ($.trim(data[i].device.device_first_issue_dt) != '') {
                         deviceDetail += "<tr><td scope='rowgroup' rowspan='" + data[i].deviceIdentifierList.length + "'>" + formatedDate(data[i].device.device_first_issue_dt) + "</td>";
 
@@ -122,11 +117,9 @@ function getDeviceListInfo(data, status, lang) {
                     //}
 
                     deviceDetail += "<td>" + data[i].deviceIdentifierList[0].device_identifier + "</td></tr>";
-                    console.log(i + "= " + deviceDetail);
                 }
                 else {
                         if (index > 0) {
-                            console.log("Im here index =" + index);
                             deviceDetail += "<tr><td>" + formatedDate(record.identifier_first_issue_dt) + "</td>";
                             if (status == "archived") {
                                 deviceDetail += "<td>" + formatedDate(record.end_date) + "</td>";
@@ -137,7 +130,6 @@ function getDeviceListInfo(data, status, lang) {
                 
             });
         }
-        console.log("i" + i +":" + deviceDetail);
     }
     
     if (deviceDetail != '') {
@@ -188,7 +180,6 @@ function getDeviceListInfo(data, status, lang) {
                                     "<tbody>" + deviceDetail + "</tbody>" +
                                 "</table>";
     }
-    console.log(devieTable);
     return devieTable;
 }
 

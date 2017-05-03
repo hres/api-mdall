@@ -101,8 +101,14 @@
                 <div class="panel-heading">
                     <div class="row">
                         <h2 class="col-sm-6 mrgn-tp-sm">Manufacturer</h2>
+                        
                         <div class="mrgn-tp-sm pull-right">
                             <span><strong>Revision date: </strong></span>&nbsp;2016-09-20
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mrgn-rght-md pull-right">
+                            <a href="" id="topLink">New search</a>
                         </div>
                     </div>
                 </div>
@@ -125,8 +131,12 @@
                             </thead>
                             <tbody id="tbodyMain"></tbody>
                         </table>
+                        <div class="mrgn-rght-md pull-right">
+                            <a href="" id="botLink">New search</a>
+                        </div>
                     </div>
                 </div>
+
             </section>
 
             <!-- prefooter-fr.html-Start-->
@@ -194,7 +204,7 @@
             "initComplete": function (settings, json) {
 
                 console.log(json.data);
-
+                setSearchUrl();
                 if ($.trim(json.data.company_id) == 0) {
                    // alert("error");
                 }
@@ -202,7 +212,7 @@
                     $('#address').append(json.data.company_address);
                     $('#companyID').append(json.data.company_id);
                     if (licID > 0 || devID > 0) {
-                        $('#companyName').append('<a href=medical-device-detail.html?lang=en&id=' + json.data.company_id + '>' +  json.data.company_name + '</a>');
+                        $('#companyName').append('<a href=medical-device-detail.html?lang=en&id=' + json.data.company_id + '>Full listings of ' +  json.data.company_name + '</a>');
                     }
                     else
                     {
@@ -254,6 +264,13 @@
 
             ]
         }
+
+        function setSearchUrl(url)
+        {
+            $('#topLink').attr("href", url);
+            $('#botLink').attr("href", url);
+        }
+
     </script>
 </body>
 </html>

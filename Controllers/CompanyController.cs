@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using MdallWebApi.Models;
+using System.Web.Mvc;
+
 namespace MdallWebApi.Controllers
 {
     public class CompanyController : ApiController
@@ -25,6 +27,5 @@ namespace MdallWebApi.Controllers
             }
             return company;
         }
- 
     }
 }
