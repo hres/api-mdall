@@ -111,36 +111,69 @@
                                     <td>Toutes les licences:</td>
                                     <td><a class="btn btn-default" href="./api/licence/?type=json">Json</a></td>
                                     <td><a class="btn btn-default" href="./api/licence/?type=xml">XML</a></td>
+                                    <td>
+                                        <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=licence">
+                                            <input type="submit" class="btn btn-default" value="CSV (Download)" />
+                                        </form>
+                                    </td>
                                 </tr>
+                                <!--
                                 <tr>
                                     <td>Toutes les licences avec entreprises:</td>
                                     <td><a class="btn btn-default" href="./api/licencecompany/?type=json">Json</a></td>
                                     <td><a class="btn btn-default" href="./api/licencecompany/?type=xml">XML</a></td>
+                                    <td><input type="button" id="dlCompany" class="btn btn-default" value="CSV (Download)" onclick="downloadFileUsingForm('company');" /></td>
                                 </tr>
+                                -->
                                 <tr>
                                     <td>Toutes les entreprises:</td>
                                     <td><a class="btn btn-default" href="./api/company/?type=json">Json</a></td>
                                     <td><a class="btn btn-default" href="./api/company/?type=xml">XML</a></td>
+                                    <td>
+                                        <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=company">
+                                            <input type="submit" class="btn btn-default" value="CSV (Download)" />
+                                        </form>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Tous les instruments:</td>
                                     <td><a class="btn btn-default" href="./api/device/?type=json">Json</a></td>
                                     <td><a class="btn btn-default" href="./api/device/?type=xml">XML</a></td>
+                                    <td>
+                                        <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=device">
+                                            <input type="submit" class="btn btn-default" value="CSV (Download)" />
+                                        </form>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Tous les identificateurs:</td>
                                     <td><a class="btn btn-default" href="./api/deviceidentifier/?type=json">Json</a></td>
                                     <td><a class="btn btn-default" href="./api/deviceidentifier/?type=xml">XML</a></td>
+                                    <td>
+                                        <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=identifier">
+                                            <input type="submit" class="btn btn-default" value="CSV (Download)" />
+                                        </form>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Tous les types de licence:</td>
                                     <td><a class="btn btn-default" href="./api/licencetype/?type=json">Json</a></td>
                                     <td><a class="btn btn-default" href="./api/licencetype/?type=xml">XML</a></td>
+                                    <td>
+                                        <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=licenceType">
+                                            <input type="submit" class="btn btn-default" value="CSV (Download)" />
+                                        </form>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>L'information a-propos location sbd:</td>
                                     <td><a class="btn btn-default" href="./api/sbdlocation/?type=json">Json</a></td>
                                     <td><a class="btn btn-default" href="./api/sbdlocation/?type=xml">XML</a></td>
+                                    <td>
+                                        <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=sbdLocation">
+                                            <input type="submit" class="btn btn-default" value="CSV (Download)" />
+                                        </form>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

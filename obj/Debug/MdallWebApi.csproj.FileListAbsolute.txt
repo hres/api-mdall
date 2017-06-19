@@ -149,3 +149,6 @@ C:\Workspace_API\api-mdall\bin\MdallWebApi.pdb
 C:\Workspace_API\api-mdall\obj\Debug\MdallWebApi.dll
 C:\Workspace_API\api-mdall\obj\Debug\MdallWebApi.pdb
 C:\Workspace_API\api-mdall\obj\Debug\MdallWebApi.csprojResolveAssemblyReference.cache
+C:\Workspace_API\api-mdall\bin\System.Web.Cors.dll
+C:\Workspace_API\api-mdall\bin\System.Web.Http.Cors.dll
+C:\Workspace_API\api-mdall\bin\System.Web.Http.Cors.xml

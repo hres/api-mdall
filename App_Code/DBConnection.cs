@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 
@@ -26,6 +27,92 @@ namespace MdallWebApi
         private string MdallDBConnection
         {
             get { return ConfigurationManager.ConnectionStrings["mdall"].ToString(); }
+        }
+
+
+        public void CSV()
+        {
+
+            var commandText = "SELECT  * FROM asdaB_ACS.PAS_LICENCE L";
+
+            string csv = string.Empty;
+
+            using (OracleConnection con = new OracleConnection(MdallDBConnection))
+            {
+
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            for (int i = 0; i < dr.FieldCount; i++)
+                            {
+                                csv += dr.GetName(i) + ", ";
+                            }
+
+                            csv += "\r\n";
+
+                            while (dr.Read())
+                            {
+                                for (int x = 0; x < dr.FieldCount; x++)          //Data may contain commas - find a way to escape these
+                                {
+                                    csv += dr.GetValue(x) + ", ";
+                                }
+                                csv += "\r\n";
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetAllEstablishment()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+
+            //System.Diagnostics.Debug.WriteLine(csv);
+
+
+            var filePath = @"./logs";
+            //var filePath = @"C:\";
+            System.Diagnostics.Debug.WriteLine(filePath);
+            var logFile = string.Format("DB Call", filePath, DateTime.Now);
+
+
+            FileStream fs = File.Create("DB Call.txt");
+            fs.Close();
+
+            using (StreamWriter sw = new StreamWriter("DB Call.txt", true))
+            {
+                sw.Write(csv);
+                sw.Close();
+            }
+
+            /*
+            System.Web.HttpResponse response = System.Web.HttpContext.Current.Response;
+
+            //Download the CSV file.
+            response.Clear();
+            response.Buffer = false;
+            response.AddHeader("content-disposition", "attachment;filename=SqlExport.csv");
+            response.Charset = "";
+            response.ContentType = "application/text";
+            response.Write(csv);
+            response.Output.Write(csv);
+            response.TransmitFile(System.Web.HttpContext.Current.Server.MapPath("SqlExport.csv"));
+            response.Flush();
+            response.End();
+
+            */
+            System.Diagnostics.Debug.WriteLine("Done");
         }
 
         public List<Licence> GetAllLicence(string status, string licenceName)

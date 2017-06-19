@@ -203,8 +203,6 @@
             },
             "initComplete": function (settings, json) {
 
-                console.log(json.data);
-                setSearchUrl();
                 if ($.trim(json.data.company_id) == 0) {
                    // alert("error");
                 }
@@ -263,12 +261,6 @@
 
 
             ]
-        }
-
-        function setSearchUrl(url)
-        {
-            $('#topLink').attr("href", url);
-            $('#botLink').attr("href", url);
         }
 
     </script>

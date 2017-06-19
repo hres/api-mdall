@@ -13,6 +13,9 @@ namespace MdallWebApi
         public static readonly string UriPathExtensionKey = "ext";
         public static void Register(HttpConfiguration config)
         {
+
+            config.EnableCors();
+
             // config.MapHttpAttributeRoutes();
             //Enable CORS support
             config.Routes.MapHttpRoute(
