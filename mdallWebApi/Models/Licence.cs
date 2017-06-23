@@ -19,7 +19,14 @@ namespace MdallWebApi.Models
         public int company_id { get; set; }
         public string licence_type_desc { get; set; }
 
-       // public IList<Device> deviceList { get; set; }
+        public string noc_location { get; set; }
+        public string sbd_location { get; set; }
+        public Boolean has_location { get; set; }        
+
+
+        // public SbdLocation location { get; set; }
+
+        // public IList<Device> deviceList { get; set; }
     }
 
 

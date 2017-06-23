@@ -8,25 +8,46 @@ function getParameterByName(name) {
 }
 
 
+function formatParameter(parm){
+    return parm=parm.replace(/ /g, "%20");
+}
+
+
 function OnFail(result) {
     window.location.href = "./genericError.html";
 }
 
+function getDeviceListInfo(data, status, lang) {
 
-
-function getDeviceListInfo(data) {
     if (data.length == 0) {
         return "";
     }
+
+
     var deviceDetail = "";
 
     var txt = "";
     var i;
     for (i = 0; i < data.length; i++) {
-        //console.log("deviceIdentifierList" + i + ":" + data[i].deviceIdentifierList.length);
         if (data[i].deviceIdentifierList.length == 1) {
+
+          
             if ($.trim(data[i].device.device_first_issue_dt) != '') {
                 deviceDetail += "<tr><td>" + formatedDate(data[i].device.device_first_issue_dt) + "</td>";
+            }
+
+            if (status == "archived")
+            {
+
+                if ($.trim(data[i].device.end_date) == '') {
+                    deviceDetail += "<td>&nbsp;</td>";
+
+                }
+
+                if ($.trim(data[i].device.end_date) != '') {
+                    deviceDetail += "<td>" + formatedDate(data[i].device.end_date) + "</td>";
+
+                }
             }
             if ($.trim(data[i].device.trade_name) != '') {
                 deviceDetail += "<td>" + data[i].device.trade_name + "</td>";
@@ -35,46 +56,80 @@ function getDeviceListInfo(data) {
             {
                 deviceDetail += "<td>" + formatedDate(data[i].deviceIdentifierList[0].identifier_first_issue_dt) + "</td>";
             }
-            else
-            {
-                deviceDetail += "<td>&nbsp;</td>";
+
+            if (status == "archived") {
+
+                if ($.trim(data[i].deviceIdentifierList[0].end_date) == '') {
+                    deviceDetail += "<td>&nbsp;</td>";
+                }
+                if ($.trim(data[i].deviceIdentifierList[0].end_date) != '') {
+                    deviceDetail += "<td>" + formatedDate(data[i].deviceIdentifierList[0].end_date) + "</td>";
+                }
             }
+
+            //else
+            //{
+            //   deviceDetail += "<td>&nbsp;</td>";
+            //}
             deviceDetail += "<td>" + data[i].deviceIdentifierList[0].device_identifier + "</td></tr>";
         }
         else
         {
-            //console.log("Im here" + i + ":" + data[i].deviceIdentifierList);
             $.each(data[i].deviceIdentifierList, function (index, record) {
                 if (index == 0) {
-                    //console.log("Im here index =" + index);
                     if ($.trim(data[i].device.device_first_issue_dt) != '') {
                         deviceDetail += "<tr><td scope='rowgroup' rowspan='" + data[i].deviceIdentifierList.length + "'>" + formatedDate(data[i].device.device_first_issue_dt) + "</td>";
 
                     }
+                    if (status == "archived")
+                    {
+                        if ($.trim(data[i].device.end_date) == '') {
+                            deviceDetail += "<td scope='rowgroup' rowspan='" + data[i].deviceIdentifierList.length + "'>" + "</td>";
+                        }
+
+                        if ($.trim(data[i].device.end_date) != '') {
+                            deviceDetail += "<td scope='rowgroup' rowspan='" + data[i].deviceIdentifierList.length + "'>" + formatedDate(data[i].device.end_date) + "</td>";
+
+                        }
+                    }
+
+                   
                     if ($.trim(data[i].device.trade_name) != '') {
                         deviceDetail += "<td scope='rowgroup' rowspan='" + data[i].deviceIdentifierList.length + "'>" + data[i].device.trade_name + "</td>";
                     }
+
+
                     if ($.trim(data[i].deviceIdentifierList[0].identifier_first_issue_dt) != '') {
                         deviceDetail += "<td>" + formatedDate(data[i].deviceIdentifierList[0].identifier_first_issue_dt) + "</td>";
                     }
-                    else {
-                        deviceDetail += "<td>&nbsp;</td>";
+
+                    if (status == "archived") {
+
+                        if ($.trim(data[i].deviceIdentifierList[0].end_date) == '') {
+                            deviceDetail += "<td>&nbsp;</td>"
+                        }
+                        if ($.trim(data[i].deviceIdentifierList[0].end_date) != '') {
+                            deviceDetail += "<td>" + formatedDate(data[i].deviceIdentifierList[0].end_date) + "</td>";
+                        }
                     }
+                    //else {
+                    //    deviceDetail += "<td>&nbsp;</td>";
+                    //}
 
                     deviceDetail += "<td>" + data[i].deviceIdentifierList[0].device_identifier + "</td></tr>";
-                    //console.log(i + "= " + deviceDetail);
                 }
                 else {
                         if (index > 0) {
-                            //console.log("Im here index =" + index);
                             deviceDetail += "<tr><td>" + formatedDate(record.identifier_first_issue_dt) + "</td>";
+                            if (status == "archived") {
+                                deviceDetail += "<td>" + formatedDate(record.end_date) + "</td>";
+                            }
                             deviceDetail += "<td>" + record.device_identifier + "</td></tr>";
                         }            
                 }
                 
             });
         }
-        //console.log("i" + i +":" + deviceDetail);
     }
     
     if (deviceDetail != '') {
@@ -82,21 +137,51 @@ function getDeviceListInfo(data) {
         deviceDetail = deviceDetail.replace(/"/g, "");
     }
 
-    var devieTable = "<table class='table table-responsive table-bordered table-condensed'>" +
-                            "<thead>" +
-                                "<tr class='active'>" +
-                                    "<th>Device first issue date</th>" +
-                                    "<th>Device name</th>" +
-                                    "<th>Identifier first issue date</th>" +
-                                    "<th>Device identifier</th>" +
-                                "</tr>" +
-                            "</thead>" +
-                            "<tbody>" + deviceDetail + "</tbody>" +
-                        "</table>";
-    //console.log(devieTable);
+    if (lang == "en")
+    {
+        var devieTable = "<table class='table table-responsive table-bordered table-condensed'>" +
+                                    "<thead>" +
+                                        "<tr class='active'>" +
+                                            "<th>Device first issue date</th>";
+                if(status=="archived")
+                {
+                   devieTable+= "<th>Device end date</th>";
+                }
+                                    
+                devieTable += "<th>Device name</th>" +
+                               "<th>Identifier first issue date</th>";
+                if (status == "archived") {
+                    devieTable += "<th>Identifier end date</th>";
+                }
+                devieTable += "<th>Device identifier</th>" +
+                                    "</tr>" +
+                                    "</thead>" +
+                                    "<tbody>" + deviceDetail + "</tbody>" +
+                                "</table>";
+         }
+    else {
+
+        var devieTable = "<table class='table table-responsive table-bordered table-condensed'>" +
+                                    "<thead>" +
+                                        "<tr class='active'>" +
+                                            "<th>Première date de délivrance de l'instrument</th>";
+                if (status == "archived") {
+                    devieTable += "<th>Date de clôture de l'instrument</th>";
+                }
+
+                devieTable += "<th>Nom de l'instrument</th>" +
+                               "<th>Première date de délivrance de l'identificateur</th>";
+                if (status == "archived") {
+                    devieTable += "<th>Date de clôture de l'identificateur</th>";
+                }
+                devieTable += "<th>Identificateur</th>" +
+                                    "</tr>" +
+                                    "</thead>" +
+                                    "<tbody>" + deviceDetail + "</tbody>" +
+                                "</table>";
+    }
     return devieTable;
 }
-
 
 function formatedAddress(data) {
     var address;
@@ -167,7 +252,7 @@ function formatedOrderedList(data) {
     if (list != '') {
         list = list.replace("undefined", "");
         list = list.replace(/"/g, "");
-        return "<ul>" + list + "</ul>";;
+        return "<ul>" + list + "</ul>";
     }
     return "";
 }

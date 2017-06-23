@@ -9,6 +9,6 @@ namespace MdallWebApi.Models
     interface ICompanyRepository
     {
         IEnumerable<Company> GetAll(string status = "", string company_name = "");
-        Company Get(int id, string lang);
+        Company Get( int id, string lang, string status = "");
     }
 }

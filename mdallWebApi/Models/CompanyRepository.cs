@@ -20,10 +20,10 @@ namespace MdallWebApi.Models
         }
 
 
-        public Company Get(int id, string lang)
+        public Company Get( int id, string lang, string status = "")
         {
             DBConnection dbConnection = new DBConnection(lang);
-            company = dbConnection.GetCompanyById(id);
+            company = dbConnection.GetCompanyById(status, id);
             //company.licenceList = new List<Licence>();
 
             //if (company != null && company.company_id > 0)

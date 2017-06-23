@@ -26,6 +26,7 @@
     <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/soyutils.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/wet-en.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/plugins-en.js"></script>
+    <script src="scripts/google-analytics.js"></script>
     <!--<script type="text/javascript" src="./gcweb_4.0.22/wet-en.js"></script>
     <script type="text/javascript" src="./gcweb_4.0.22/plugins-en.js"></script>-->
     <!-- Load closure template scripts -->
@@ -79,7 +80,7 @@
 	    search: true,
 		lngLinks: [{
 			lang: "en",
-			href: "instruments-medicaux.html",
+			href: "recherche-par-companie.html",
 			text: "Français",
 		}],
 		showPreContent: true,
@@ -91,11 +92,17 @@
     <div class="container">
         <main role="main" property="mainContentOfPage" class="container">
             <div class="wb-frmvld">
-                <form name="mdall" action="medical-device-result-company.html" method="get" id="mdall">
+                <form name="mdall" action="result-company.html" method="get" id="mdall">
                     <h1 property="name" id="wb-cont">Medical Devices Active Licence Listing</h1>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h2 class="panel-title">Active company search</h2>
+                            <h2 class="panel-title"></h2>
+                            <div class="row">
+                                <h2 class="col-sm-6 mrgn-tp-sm">Active company search</h2>
+                                <div class="mrgn-tp-sm mrgn-rght-md pull-right">
+                                    <a href="main-en.html">Main search</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">                                

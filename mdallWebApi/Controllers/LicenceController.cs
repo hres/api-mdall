@@ -25,6 +25,7 @@ namespace MdallWebApi.Controllers
             }
             return licence;
         }
+      
 
         public IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string status = "")
         {

@@ -13,6 +13,8 @@ namespace MdallWebApi
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapPageRoute("HtmlRoute", "detailsURL", "~/medical-device-detail.html");
+
             routes.MapRoute(
                 name: "Root",
                 url: "{action}",

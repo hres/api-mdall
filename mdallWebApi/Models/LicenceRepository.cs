@@ -8,6 +8,7 @@ namespace MdallWebApi.Models
         // most likely be a database of some sort, with an auto-incrementing ID field:
         private List<Licence> _licenses = new List<Licence>();
         private Licence _licence = new Licence();
+        private SbdLocation location = new SbdLocation();
         DBConnection dbConnection = new DBConnection("en");
 
         public IEnumerable<Licence> GetAll(string status = "", string licenceName = "")
@@ -23,8 +24,10 @@ namespace MdallWebApi.Models
         }
 
         public Licence Get(int id, string status = "")
-        {
-            _licence = dbConnection.GetLicenceById(id, status);
+
+        {            
+                _licence = dbConnection.GetLicenceById(id, status);            
+            
 
             return _licence;
         }
