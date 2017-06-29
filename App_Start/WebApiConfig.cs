@@ -14,7 +14,7 @@ namespace MdallWebApi
         public static void Register(HttpConfiguration config)
         {
 
-            config.EnableCors();
+           // config.EnableCors();
 
             // config.MapHttpAttributeRoutes();
             //Enable CORS support

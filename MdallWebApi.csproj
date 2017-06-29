@@ -242,6 +242,7 @@
     <Compile Include="Areas\HelpPage\IModelDocumentationProvider.cs" />
     <Compile Include="Areas\HelpPage\ModelDescriptions.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CSVController.cs" />
     <Compile Include="Controllers\MdallJsonController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\LicenceCompanyController.cs" />

@@ -54,7 +54,7 @@ namespace MdallWebApi.Controllers
                     if (numberTerm > 0)
                     {
                         licenceResult.Add(licenceController.GetLicenceById(numberTerm, status));
-                    }
+                    }  
                     else
                     {
                         if (status == "active")
@@ -359,6 +359,7 @@ namespace MdallWebApi.Controllers
                            DateTime.Now.Day.ToString().PadLeft(2, '0'));
 
             var fileName = string.Empty;
+
             fileName = string.Format(dataType + "_{0}.csv", fileNameDate);
 
             byte[] outputBuffer = null;

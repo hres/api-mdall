@@ -10,6 +10,9 @@ using System.Web.Http.Cors;
 namespace MdallWebApi.Controllers
 {
     [EnableCors(origins: "https://api.hres.ca/mdall/api-v1/", headers: "*", methods: "*")]
+
+
+
     public class SbdLocationController : ApiController
     {
         static readonly ISbdLocationRepository databasePlaceholder = new SbdLocationRepository();
