@@ -16,9 +16,9 @@ namespace MdallWebApi.Controllers
     {
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage DownloadCSV(string dataType)
+        public HttpResponseMessage DownloadCSV(string dataType, string lang)
         {
-            DBConnection dbConnection = new DBConnection("en");
+            DBConnection dbConnection = new DBConnection(lang);
             var jsonResult = string.Empty;
             var fileNameDate = string.Format("{0}{1}{2}",
                            DateTime.Now.Year.ToString(),
@@ -42,7 +42,7 @@ namespace MdallWebApi.Controllers
                 case "company":
                     var companies = dbConnection.GetAllCompany("active", "").ToList();
                     if (companies.Count > 0)
-                    {
+                    {   
                         json = JsonConvert.SerializeObject(companies);
                     }
                     break;
@@ -64,7 +64,7 @@ namespace MdallWebApi.Controllers
                     break;
 
                 case "licenceType":
-                    var types = dbConnection.GetAllLicenceType("en").ToList();
+                    var types = dbConnection.GetAllLicenceType(lang).ToList();
                     if (types.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(types);
@@ -100,6 +100,7 @@ namespace MdallWebApi.Controllers
             result.Content.Headers.ContentType = new MediaTypeHeaderValue("text/csv");
             result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName = fileName };
             return result;
+
         }
     }
 }
