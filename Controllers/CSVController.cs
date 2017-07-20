@@ -78,6 +78,32 @@ namespace MdallWebApi.Controllers
                         json = JsonConvert.SerializeObject(sbdLocations);
                     }
                     break;
+
+
+                case "archLicence":
+                    var archLicence = dbConnection.GetAllLicence("archived", "").ToList();
+                    if (archLicence.Count > 0)
+                    {
+                        json = JsonConvert.SerializeObject(archLicence);
+                    }
+                    break;
+
+                case "archDevice":
+                    var archDevice = dbConnection.GetAllDevice("archived", "", 0).ToList();
+                    if (archDevice.Count > 0)
+                    {
+                        json = JsonConvert.SerializeObject(archDevice);
+                    }
+                    break;
+
+                case "archIdentifier":
+                    var archIdentifiers = dbConnection.GetAllDeviceIdentifier("archived", "", 0, 0).ToList();
+                    if (archIdentifiers.Count > 0)
+                    {
+                        json = JsonConvert.SerializeObject(archIdentifiers);
+                    }
+                    break;
+
             }
 
             if (!string.IsNullOrWhiteSpace(json))

@@ -132,8 +132,12 @@ namespace MdallWebApi
             }
             if (status.Equals("active"))
             {
-                commandText += " L.END_DATE IS NULL";
+                commandText += " L.END_DATE IS NULL";                          
                 if (!string.IsNullOrEmpty(licenceName)) commandText += " AND";
+            }
+            else
+            {
+                commandText += " L.END_DATE IS NOT NULL";
             }
             if (!string.IsNullOrEmpty(licenceName))
             {
@@ -727,16 +731,23 @@ namespace MdallWebApi
         {
             var items = new List<DeviceIdentifier>();
             string commandText = "SELECT DISTINCT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT";
+
             if ((!string.IsNullOrEmpty(deviceIdentifierName)) || (licenceId > 0) || (deviceId > 0)) commandText += " WHERE";
+
+
             if (!string.IsNullOrEmpty(deviceIdentifierName))
             {
                 commandText += " DEVICE_IDENTIFIER LIKE '%" + deviceIdentifierName.ToUpper().Trim() + "%'";
             }
+
+
             if (licenceId > 0)
             {
                 if (!string.IsNullOrEmpty(deviceIdentifierName)) commandText += " AND";
-                commandText += " ORIGINAL_LICENCE_NO = " + licenceId;
+                commandText += "AND ORIGINAL_LICENCE_NO = " + licenceId;
             }
+
+
             if (deviceId > 0)
             {
                 if ((!string.IsNullOrEmpty(deviceIdentifierName)) || (licenceId > 0)) commandText += " AND";
@@ -745,17 +756,30 @@ namespace MdallWebApi
 
             if (!string.IsNullOrEmpty(status))
             {
+
+
+                if(status.Contains("WHERE"))
+                {
+                    commandText += " AND ";
+                }
+
+                else
+                {
+                    commandText += " WHERE ";
+                }
+
                 if (status.Equals("active"))
                 {
-                    commandText += " AND END_DATE IS NULL ";
+                    commandText += " END_DATE IS NULL ";
                 }
                 else
                 {
-                    commandText += " AND END_DATE IS NOT NULL ";
+                    commandText += " END_DATE IS NOT NULL ";
                 }
             }
 
             commandText += " ORDER BY UPPER(DEVICE_IDENTIFIER)";
+
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
