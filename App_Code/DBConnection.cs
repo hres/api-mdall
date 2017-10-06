@@ -176,7 +176,7 @@ namespace MdallWebApi
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.licence_type_cd = dr["LICENCE_TYPE_CD"] == DBNull.Value ? string.Empty : dr["LICENCE_TYPE_CD"].ToString().Trim();
                                 item.company_id = dr["COMPANY_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_ID"]);
-                                item.has_location = false;
+                                //item.has_location = false;
 
                                 if (!string.IsNullOrWhiteSpace(item.licence_type_cd))
                                 {
@@ -184,12 +184,12 @@ namespace MdallWebApi
                                     item.licence_type_desc = licenceType.licence_type_desc;
                                 }
                                 SbdLocation location = GetSbdLocationById(item.original_licence_no);
-                                if(location.original_licence_no != 0)
-                                {
-                                    item.has_location = true;
-                                    item.noc_location = location.sbd_notice_web_loc;
-                                    item.sbd_location = location.sbd_web_loc;
-                                }
+                                //if(location.original_licence_no != 0)
+                                //{
+                                //    item.has_location = true;
+                                //    item.noc_location = location.sbd_notice_web_loc;
+                                //    item.sbd_location = location.sbd_web_loc;
+                                //}
                                 items.Add(item);
                                 //System.Diagnostics.Debug.WriteLine("Record #" + items.Count + " at " + DateTime.Now);
                             }
@@ -264,7 +264,7 @@ namespace MdallWebApi
                                     item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                     item.licence_type_cd = dr["LICENCE_TYPE_CD"] == DBNull.Value ? string.Empty : dr["LICENCE_TYPE_CD"].ToString().Trim();
                                     item.company_id = dr["COMPANY_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_ID"]);
-                                    item.has_location = false;
+                                    //item.has_location = false;
                                     if (!string.IsNullOrWhiteSpace(item.licence_type_cd))
                                     {
                                         LicenceType licenceType = GetLicenceTypeByCode(item.licence_type_cd);
@@ -273,12 +273,12 @@ namespace MdallWebApi
 
                                    
                                     SbdLocation location = GetSbdLocationById(item.original_licence_no);
-                                    if(location.original_licence_no !=0)
-                                    {
-                                        item.has_location = true;
-                                        item.noc_location = location.sbd_notice_web_loc;
-                                        item.sbd_location = location.sbd_web_loc;
-                                    }
+                                    //if(location.original_licence_no !=0)
+                                    //{
+                                    //    item.has_location = true;
+                                    //    item.noc_location = location.sbd_notice_web_loc;
+                                    //    item.sbd_location = location.sbd_web_loc;
+                                    //}
 
                                 }
                             }
@@ -418,12 +418,12 @@ namespace MdallWebApi
                                     item.licence_type_desc = licenceType.licence_type_desc;
                                 }
                                 SbdLocation location = GetSbdLocationById(item.original_licence_no);
-                                if (location.original_licence_no != 0)
-                                {
-                                    item.has_location = true;
-                                    item.noc_location = location.sbd_notice_web_loc;
-                                    item.sbd_location = location.sbd_web_loc;
-                                }
+                                //if (location.original_licence_no != 0)
+                                //{
+                                //    item.has_location = true;
+                                //    item.noc_location = location.sbd_notice_web_loc;
+                                //    item.sbd_location = location.sbd_web_loc;
+                                //}
                                 items.Add(item);
                             }
                         }
@@ -758,23 +758,23 @@ namespace MdallWebApi
             {
 
 
-                if(status.Contains("WHERE"))
-                {
-                    commandText += " AND ";
-                }
+                //if(status.Contains("WHERE"))
+                //{
+                //    commandText += " AND ";
+                //}
 
-                else
-                {
-                    commandText += " WHERE ";
-                }
+                //else
+                //{
+                //    commandText += " WHERE ";
+                //}
 
                 if (status.Equals("active"))
                 {
-                    commandText += " END_DATE IS NULL ";
+                    commandText += " AND END_DATE IS NULL ";
                 }
                 else
                 {
-                    commandText += " END_DATE IS NOT NULL ";
+                    commandText += " AND END_DATE IS NOT NULL ";
                 }
             }
 

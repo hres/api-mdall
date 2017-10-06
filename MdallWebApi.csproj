@@ -414,6 +414,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="instruments-medicaux-detail.html" />
     <Content Include="js\jquery.xdomainrequest.min.js" />
     <Content Include="js\jsonp.js" />
     <Content Include="js\JSONtoCSV.js" />
@@ -421,6 +422,12 @@
     <Content Include="Libraries\GoC.WebTemplateMVC.dll" />
     <Content Include="Libraries\WebTemplateCore.dll" />
     <Content Include="links.html" />
+    <Content Include="logs\20161114.txt" />
+    <Content Include="logs\20161115.txt" />
+    <Content Include="logs\20161122.txt" />
+    <Content Include="logs\20161123.txt" />
+    <Content Include="logs\20161202.txt" />
+    <Content Include="logs\20170208.txt" />
     <Content Include="main-fr.html" />
     <Content Include="main-en.html" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
