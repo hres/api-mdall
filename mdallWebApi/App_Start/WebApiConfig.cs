@@ -20,23 +20,23 @@ namespace MdallWebApi
             //Enable CORS support
             config.Routes.MapHttpRoute(
                name: "Api UriPathExtension ID, status, licence, device or company",
-               routeTemplate: "api-v1/{controller}/{id}/{status}/{licence}/{companyId}.{ext}",
+               routeTemplate: "api/{controller}/{id}/{status}/{licence}/{companyId}.{ext}",
                defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "Api UriPathExtension ID, licence, device or company",
-                routeTemplate: "api-v1/{controller}/{id}/{licence}/{companyId}.{ext}",
+                routeTemplate: "api/{controller}/{id}/{licence}/{companyId}.{ext}",
                 defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional});
             config.Routes.MapHttpRoute(
                 name: "Api UriPathExtension lang, status, licence id, company id, licence name, company name",
-                routeTemplate: "api-v1/{controller}/{lang}/{status}/{licence_id}/{licence_name}/{company_id}/{company_name}/{code}.{ext}",
+                routeTemplate: "api/{controller}/{lang}/{status}/{licence_id}/{licence_name}/{company_id}/{company_name}/{code}.{ext}",
                 defaults: new { lang = RouteParameter.Optional, status = RouteParameter.Optional,  licence_id = RouteParameter.Optional, company_id = RouteParameter.Optional, licence_name = RouteParameter.Optional, company_name = RouteParameter.Optional, code = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                name: "Api UriPathExtension DIN",
-               routeTemplate: "api-v1/{controller}/{din}.{ext}",
+               routeTemplate: "api/{controller}/{din}.{ext}",
                defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api-v1/{controller}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
