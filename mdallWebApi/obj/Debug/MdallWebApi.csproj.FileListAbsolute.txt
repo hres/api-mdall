@@ -193,6 +193,5 @@ C:\Users\hcuser\Documents\api-mdall\MdallWebApi\bin\ru\System.Spatial.resources.
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csproj.App.config
-C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csprojResolveAssemblyReference.cache
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.dll
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.pdb
