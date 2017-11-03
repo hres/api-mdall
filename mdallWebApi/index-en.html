@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/soyutils.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/wet-en.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_22/cdts/compiled/plugins-en.js"></script>
-    <script src="scripts/google-analytics.js"></script>
+    <script src="./Scripts/google-analytics.js"></script>
     <!--<script type="text/javascript" src="./gcweb_4.0.22/wet-en.js"></script>
     <script type="text/javascript" src="./gcweb_4.0.22/plugins-en.js"></script>-->
     <!-- Load closure template scripts -->
@@ -44,9 +44,6 @@
     <script>dataLayer1 = [];</script>
     <!-- End Google Tag Manager -->
     <script src="./js/mdall.js"></script>
-    <script src="./Scripts/Stuk-jszip-5250332/dist/jszip.js"></script>
-    <script src="./Scripts/Stuk-jszip-5250332/vendor/FileSaver.js"></script>
-    <script src="js/jsontocsv.js"></script>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -95,12 +92,9 @@
     <div class="container">
         <main role="main" property="mainContentOfPage" class="container">
             <div class="wb-frmvld">
-
                 <section class="featured">
-
                     <h1>MDALL APIs</h1>
-
-                    <table class="wb-tables table table-striped table-hover">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>
@@ -112,65 +106,130 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Get All Licences:</td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?type=xml">XML</a></td>
-                                <td>
-                                    <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=licence">
-                                        <input type="submit" class="btn btn-default" value="CSV (Download)"/>
-                                    </form>
-                                </td>
+                                <td>Get All Licences - English:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?lang=en&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?lang=en&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=licence&lang=en">CSV (Download)</a></td>
                             </tr>
                             <tr>
-                                <td>Get All Company:</td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/company/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/company/?type=xml">XML</a></td>
-                                <td>
-                                    <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=company">
-                                        <input type="submit" class="btn btn-default" value="CSV (Download)" />
-                                    </form>
-                                </td>
+                                <td>Get All Licences - French:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?lang=fr&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?lang=fr&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=licence&lang=fr">CSV (Download)</a></td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Get All Company - English:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/company/?lang=en&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/company/?lang=en&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=company&lang=en">CSV (Download)</a></td>
                             </tr>
                             <tr>
-                                <td>Get All Devices:</td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?type=xml">XML</a></td>
-                                <td>
-                                    <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=device">
-                                        <input type="submit" class="btn btn-default" value="CSV (Download)" />
-                                    </form>
-                                </td>
+                                <td>Get All Company - French:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/company/?lang=fr&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/company/?lang=fr&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=company&lang=fr">CSV (Download)</a></td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Get All Devices - English:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?lang=en&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?lang=en&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=device&lang=en">CSV (Download)</a></td>
                             </tr>
                             <tr>
-                                <td>Get All Device Identifiers:</td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?type=xml">XML</a></td>
-                                <td>
-                                    <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=identifier">
-                                        <input type="submit" class="btn btn-default" value="CSV (Download)" />
-                                    </form>
-                                </td>
+                                <td>Get All Devices - French:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?lang=fr&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?lang=fr&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=device&lang=fr">CSV (Download)</a></td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Get All Device Identifiers - English:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?lang=en&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?lang=en&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=identifier&lang=en">CSV (Download)</a></td> >
                             </tr>
                             <tr>
-                                <td>Get All Licence Types:</td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licencetype/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licencetype/?type=xml">XML</a></td>
-                                <td>
-                                    <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=licenceType">
-                                        <input type="submit" class="btn btn-default" value="CSV (Download)" />
-                                    </form>
-                                </td>
+                                <td>Get All Device Identifiers - French:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?lang=fr&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?lang=fr&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=identifier&lang=fr">CSV (Download)</a></td> >
+                            </tr>
+
+
+                            <tr>
+                                <td>Get All Licence Types - English:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licencetype/?lang=en&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licencetype/?lang=en&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=licenceType&lang=en">CSV (Download)</a></td>
                             </tr>
                             <tr>
-                                <td>Get All SBD Location:</td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/sbdlocation/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/sbdlocation/?type=xml">XML</a></td>
-                                <td>
-                                    <form method="post" action="https://api.hres.ca/mdall/api-v1/MdallJson/DownloadCSV/?dataType=sbdLocation">
-                                        <input type="submit" class="btn btn-default" value="CSV (Download)" />
-                                    </form>
-                                </td>
+                                <td>Get All Licence Types - French:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licencetype/?lang=fr&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licencetype/?lang=fr&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=licenceType&lang=fr">CSV (Download)</a></td>
                             </tr>
+
+
+                            <tr>
+                                <td>Get All SBD Location - English:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/sbdlocation/?lang=en&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/sbdlocation/?lang=en&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=sbdLocation&lang=en">CSV (Download)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Get All SBD Location - French:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/sbdlocation/?lang=fr&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/sbdlocation/?lang=fr&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=sbdLocation&lang=fr">CSV (Download)</a></td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Get All Licences (Archived) - English:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?lang=en&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?lang=en&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=archLicence&lang=en">CSV (Download)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Get All Licences (Archived) - French:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?lang=fr&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/licence/?lang=fr&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=archLicence&lang=fr">CSV (Download)</a></td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Get All Devices (Archived) - English:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?lang=en&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?lang=en&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=archDevice&lang=en">CSV (Download)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Get All Devices (Archived) - French:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?lang=fr&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/device/?lang=fr&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=archDevice&lang=fr">CSV (Download)</a></td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Get All Device Identifiers (Archived) - English:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?lang=en&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?lang=en&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=archIdentifier&lang=en">CSV (Download)</a></td> >
+                            </tr>
+                            <tr>
+                                <td>Get All Device Identifiers (Archived) - French:</td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?status=archived&lang=fr&type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/deviceIdentifier/?lang=fr&type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="https://api.hres.ca/mdall/api-v1/CSV/DownloadCSV?dataType=archIdentifier&lang=fr">CSV (Download)</a></td> >
+                            </tr>
+
                         </tbody>
                     </table>
 
@@ -219,4 +278,27 @@
     <!--<![endif]-->
 </body>
 
+
+
 </html>
+
+<script>
+
+    var url = "./MdallJson/CSV";
+
+    function downloadFileUsingForm(data) {
+        var form = document.createElement("form");
+        form.method = "post";
+        form.action = url;
+
+        var hiddenElement = document.createElement('input');
+        hiddenElement.type = 'hidden';
+        hiddenElement.value = data;
+        hiddenElement.id = 'dataType';
+        hiddenElement.name = 'dataType';
+        document.body.appendChild(form);
+        form.appendChild(hiddenElement);
+        form.submit();
+        document.body.removeChild(form);
+    }
+</script>

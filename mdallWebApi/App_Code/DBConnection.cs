@@ -126,7 +126,7 @@ namespace MdallWebApi
 
             var items = new List<Licence>();
             string commandText = "SELECT DISTINCT L.* FROM PUB_ACS.PAS_LICENCE L";
-            if((!string.IsNullOrEmpty(status)) || (!string.IsNullOrEmpty(licenceName)))
+            if ((!string.IsNullOrEmpty(status)) || (!string.IsNullOrEmpty(licenceName)))
             {
                 commandText += " WHERE";
             }
@@ -134,6 +134,10 @@ namespace MdallWebApi
             {
                 commandText += " L.END_DATE IS NULL";
                 if (!string.IsNullOrEmpty(licenceName)) commandText += " AND";
+            }
+            else
+            {
+                commandText += " L.END_DATE IS NOT NULL";
             }
             if (!string.IsNullOrEmpty(licenceName))
             {
@@ -172,7 +176,7 @@ namespace MdallWebApi
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.licence_type_cd = dr["LICENCE_TYPE_CD"] == DBNull.Value ? string.Empty : dr["LICENCE_TYPE_CD"].ToString().Trim();
                                 item.company_id = dr["COMPANY_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_ID"]);
-                                item.has_location = false;
+                                //item.has_location = false;
 
                                 if (!string.IsNullOrWhiteSpace(item.licence_type_cd))
                                 {
@@ -180,12 +184,12 @@ namespace MdallWebApi
                                     item.licence_type_desc = licenceType.licence_type_desc;
                                 }
                                 SbdLocation location = GetSbdLocationById(item.original_licence_no);
-                                if(location.original_licence_no != 0)
-                                {
-                                    item.has_location = true;
-                                    item.noc_location = location.sbd_notice_web_loc;
-                                    item.sbd_location = location.sbd_web_loc;
-                                }
+                                //if(location.original_licence_no != 0)
+                                //{
+                                //    item.has_location = true;
+                                //    item.noc_location = location.sbd_notice_web_loc;
+                                //    item.sbd_location = location.sbd_web_loc;
+                                //}
                                 items.Add(item);
                                 //System.Diagnostics.Debug.WriteLine("Record #" + items.Count + " at " + DateTime.Now);
                             }
@@ -260,21 +264,21 @@ namespace MdallWebApi
                                     item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                     item.licence_type_cd = dr["LICENCE_TYPE_CD"] == DBNull.Value ? string.Empty : dr["LICENCE_TYPE_CD"].ToString().Trim();
                                     item.company_id = dr["COMPANY_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_ID"]);
-                                    item.has_location = false;
+                                    //item.has_location = false;
                                     if (!string.IsNullOrWhiteSpace(item.licence_type_cd))
                                     {
                                         LicenceType licenceType = GetLicenceTypeByCode(item.licence_type_cd);
                                         item.licence_type_desc = licenceType.licence_type_desc;
                                     }
 
-                                   
+
                                     SbdLocation location = GetSbdLocationById(item.original_licence_no);
-                                    if(location.original_licence_no !=0)
-                                    {
-                                        item.has_location = true;
-                                        item.noc_location = location.sbd_notice_web_loc;
-                                        item.sbd_location = location.sbd_web_loc;
-                                    }
+                                    //if(location.original_licence_no !=0)
+                                    //{
+                                    //    item.has_location = true;
+                                    //    item.noc_location = location.sbd_notice_web_loc;
+                                    //    item.sbd_location = location.sbd_web_loc;
+                                    //}
 
                                 }
                             }
@@ -365,16 +369,17 @@ namespace MdallWebApi
         //}
         public List<Licence> GetAllLicenceByCompanyId(int company_id, string status)
         {
-            var items = new List<Licence>(); 
+            var items = new List<Licence>();
             string commandText = "SELECT UNIQUE L.* FROM PUB_ACS.PAS_LICENCE L, PUB_ACS.PAS_LICENCE_DEVICE D ";
             commandText += " WHERE ";
-            if (!string.IsNullOrEmpty(status)) {
+            if (!string.IsNullOrEmpty(status))
+            {
                 if (status.Equals("active"))
                 {
                     commandText += " L.END_DATE IS NULL AND";
                 }
 
-               else
+                else
                 {
                     // commandText += " L.END_DATE IS NOT NULL OR ";
                     commandText += " D.END_DATE IS NOT NULL AND L.ORIGINAL_LICENCE_NO = D.ORIGINAL_LICENCE_NO AND ";
@@ -414,12 +419,12 @@ namespace MdallWebApi
                                     item.licence_type_desc = licenceType.licence_type_desc;
                                 }
                                 SbdLocation location = GetSbdLocationById(item.original_licence_no);
-                                if (location.original_licence_no != 0)
-                                {
-                                    item.has_location = true;
-                                    item.noc_location = location.sbd_notice_web_loc;
-                                    item.sbd_location = location.sbd_web_loc;
-                                }
+                                //if (location.original_licence_no != 0)
+                                //{
+                                //    item.has_location = true;
+                                //    item.noc_location = location.sbd_notice_web_loc;
+                                //    item.sbd_location = location.sbd_web_loc;
+                                //}
                                 items.Add(item);
                             }
                         }
@@ -447,8 +452,8 @@ namespace MdallWebApi
             string commandText = "SELECT DISTINCT C.* FROM PUB_ACS.PAS_LICENCE_COMPANY C";
 
             if ((!string.IsNullOrEmpty(status)) || (!string.IsNullOrEmpty(companyName))) commandText += " , PUB_ACS.PAS_LICENCE L WHERE ";
-            
-            if(!string.IsNullOrEmpty(status))
+
+            if (!string.IsNullOrEmpty(status))
             {
                 if (status.Equals("active"))
                 {
@@ -465,7 +470,7 @@ namespace MdallWebApi
             if (!string.IsNullOrEmpty(companyName))
             {
                 if (!string.IsNullOrEmpty(status)) commandText += " AND";
-                    commandText += " UPPER(C.COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%'";
+                commandText += " UPPER(C.COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%'";
             }
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
@@ -528,8 +533,8 @@ namespace MdallWebApi
 
         public Company GetCompanyById(string status, int id)
         {
-            var company = new Company();           
-           // string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_COMPANY WHERE COMPANY_ID = " + id;
+            var company = new Company();
+            // string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_COMPANY WHERE COMPANY_ID = " + id;
 
 
             string commandText = "SELECT DISTINCT C.* FROM PUB_ACS.PAS_LICENCE_COMPANY C, PUB_ACS.PAS_LICENCE L WHERE ";
@@ -557,7 +562,7 @@ namespace MdallWebApi
                 {
                     con.Open();
                     using (OracleDataReader dr = cmd.ExecuteReader())
-                    { 
+                    {
 
                         if (dr.HasRows)
                         {
@@ -605,7 +610,8 @@ namespace MdallWebApi
             if ((!string.IsNullOrEmpty(status)) || (licenceId > 0))
             {
                 commandText += " , PUB_ACS.PAS_LICENCE L WHERE D.ORIGINAL_LICENCE_NO = L.ORIGINAL_LICENCE_NO";
-            } else if (!string.IsNullOrEmpty(deviceName))
+            }
+            else if (!string.IsNullOrEmpty(deviceName))
             {
                 commandText += " WHERE";
             }
@@ -621,14 +627,14 @@ namespace MdallWebApi
                     commandText += " AND D.END_DATE IS NOT NULL ";
                 }
             }
-            if (!string.IsNullOrEmpty(deviceName))  
+            if (!string.IsNullOrEmpty(deviceName))
             {
                 if (!string.IsNullOrEmpty(status)) commandText += " AND";
                 commandText += " D.TRADE_NAME LIKE '%" + deviceName.ToUpper().Trim() + "%'";
             }
-            else if(licenceId > 0)
+            else if (licenceId > 0)
             {
-                
+
                 commandText += " AND L.ORIGINAL_LICENCE_NO = " + licenceId;
             }
             commandText += " ORDER BY UPPER(D.TRADE_NAME)";
@@ -686,7 +692,7 @@ namespace MdallWebApi
             using (
 
                 OracleConnection con = new OracleConnection(MdallDBConnection))
-                {
+            {
                 OracleCommand cmd = new OracleCommand(commandText, con);
                 try
                 {
@@ -721,22 +727,29 @@ namespace MdallWebApi
             }
             return device;
         }
-        
-        
+
+
         public List<DeviceIdentifier> GetAllDeviceIdentifier(string status, string deviceIdentifierName, int licenceId, int deviceId)
         {
             var items = new List<DeviceIdentifier>();
             string commandText = "SELECT DISTINCT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT";
+
             if ((!string.IsNullOrEmpty(deviceIdentifierName)) || (licenceId > 0) || (deviceId > 0)) commandText += " WHERE";
+
+
             if (!string.IsNullOrEmpty(deviceIdentifierName))
             {
                 commandText += " DEVICE_IDENTIFIER LIKE '%" + deviceIdentifierName.ToUpper().Trim() + "%'";
             }
+
+
             if (licenceId > 0)
             {
                 if (!string.IsNullOrEmpty(deviceIdentifierName)) commandText += " AND";
-                commandText += " ORIGINAL_LICENCE_NO = " + licenceId;
+                commandText += "AND ORIGINAL_LICENCE_NO = " + licenceId;
             }
+
+
             if (deviceId > 0)
             {
                 if ((!string.IsNullOrEmpty(deviceIdentifierName)) || (licenceId > 0)) commandText += " AND";
@@ -745,6 +758,18 @@ namespace MdallWebApi
 
             if (!string.IsNullOrEmpty(status))
             {
+
+
+                //if(status.Contains("WHERE"))
+                //{
+                //    commandText += " AND ";
+                //}
+
+                //else
+                //{
+                //    commandText += " WHERE ";
+                //}
+
                 if (status.Equals("active"))
                 {
                     commandText += " AND END_DATE IS NULL ";
@@ -756,6 +781,7 @@ namespace MdallWebApi
             }
 
             commandText += " ORDER BY UPPER(DEVICE_IDENTIFIER)";
+
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
@@ -793,13 +819,13 @@ namespace MdallWebApi
             }
             return items;
         }
-        
+
         public DeviceIdentifier GetDeviceIdentifierById(int id)
         {
             var deviceIdentifier = new DeviceIdentifier();
             string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT WHERE DEVICE_ID = " + id;
 
-            using (  OracleConnection con = new OracleConnection(MdallDBConnection))
+            using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
                 try
@@ -856,7 +882,8 @@ namespace MdallWebApi
             commandText += " LEFT OUTER JOIN PUB_ACS.PAS_LICENCE_COMPANY C ON L.COMPANY_ID = C.COMPANY_ID";
             //commandText += " LEFT OUTER JOIN PUB_ACS.PAS_LICENCE_TYPE T ON L.LICENCE_TYPE_CD = T.LICENCE_TYPE_CD";
             commandText += " WHERE";
-            if (!string.IsNullOrEmpty(status)) {
+            if (!string.IsNullOrEmpty(status))
+            {
                 if (status.Equals("active"))
                 {
                     commandText += " L.END_DATE IS NULL";
@@ -871,22 +898,22 @@ namespace MdallWebApi
                 commandText += " AND";
             }
             if (!string.IsNullOrEmpty(licenceName))
-            { 
+            {
                 commandText += " UPPER(L.LICENCE_NAME) LIKE '%" + licenceName.ToUpper().Trim() + "%'";
                 commandText += " ORDER BY UPPER(L.LICENCE_NAME)";
             }
             if (licenceNumber > 0)
-            { 
+            {
                 commandText += " UPPER(L.ORIGINAL_LICENCE_NO) LIKE '%" + licenceNumber + "%'";
 
             }
             if (!string.IsNullOrEmpty(companyName))
-            { 
+            {
                 commandText += " UPPER(C.COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%'";
                 commandText += " ORDER BY UPPER(L.LICENCE_NAME)";
             }
             if (companyId > 0)
-            { 
+            {
                 commandText += " UPPER(L.COMPANY_ID) LIKE '%" + companyId + "%'";
                 commandText += " ORDER BY UPPER(L.LICENCE_NAME)";
             }
@@ -942,7 +969,7 @@ namespace MdallWebApi
             }
             return items;
         }
-       
+
         public List<LicenceCompany> GetLicenceCompanyByCriteria(string lang, string status, int companyId)
         {
 
@@ -977,7 +1004,7 @@ namespace MdallWebApi
             {
                 commandText += " AND";
             }
-           
+
             if (companyId > 0)
             {
                 commandText += " UPPER(L.COMPANY_ID) LIKE '%" + companyId + "%'";
@@ -1055,7 +1082,7 @@ namespace MdallWebApi
             if (!string.IsNullOrEmpty(status))
             {
                 if (status.Equals("active"))
-                { 
+                {
                     commandText += " AND L.END_DATE IS NULL";
                 }
                 else
@@ -1126,7 +1153,7 @@ namespace MdallWebApi
             }
             return licence;
         }
-      
+
 
         public List<ViewLicenceDevice> GetAllLicenceDeviceByLicenceId(string licenceId, string lang)
         {
@@ -1190,7 +1217,7 @@ namespace MdallWebApi
                 commandText += " LICENCE_TYPE_DESC_E AS LICENCE_TYPE_DESC";
 
             }
-            else if(lang.Equals("fr"))
+            else if (lang.Equals("fr"))
             {
                 commandText += " LICENCE_TYPE_DESC_F AS LICENCE_TYPE_DESC";
             }
@@ -1200,7 +1227,7 @@ namespace MdallWebApi
             }
             commandText += " FROM PUB_ACS.PAS_LICENCE_TYPE";
 
-                using (OracleConnection con = new OracleConnection(MdallDBConnection))
+            using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
                 try
@@ -1249,7 +1276,7 @@ namespace MdallWebApi
             commandText += " FROM PUB_ACS.PAS_LICENCE_TYPE";
             commandText += " WHERE LICENCE_TYPE_CD = '" + code.Trim() + "'";
 
-            using ( OracleConnection con = new OracleConnection(MdallDBConnection))
+            using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
                 try
@@ -1346,7 +1373,7 @@ namespace MdallWebApi
             string commandText = "SELECT * FROM PUB_ACS.PAS_SBD_LOCATION_INFO WHERE ORIGINAL_LICENCE_NO = " + id;
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
-                {
+            {
                 OracleCommand cmd = new OracleCommand(commandText, con);
                 try
                 {
