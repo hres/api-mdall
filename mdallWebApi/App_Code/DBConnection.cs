@@ -115,7 +115,7 @@ namespace MdallWebApi
             System.Diagnostics.Debug.WriteLine("Done");
         }
 
-        public List<Licence> GetAllLicence(string status, string licenceName)
+        public List<Licence> GetAllLicence(string status="", string licenceName="")
         {
             /*
             DateTime invokeTime = DateTime.Now;
@@ -729,7 +729,7 @@ namespace MdallWebApi
         }
 
 
-        public List<DeviceIdentifier> GetAllDeviceIdentifier(string status, string deviceIdentifierName, int licenceId, int deviceId)
+        public List<DeviceIdentifier> GetAllDeviceIdentifier(string status="", string deviceIdentifierName="", int licenceId=0, int deviceId=0)
         {
             var items = new List<DeviceIdentifier>();
             string commandText = "SELECT DISTINCT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT";
