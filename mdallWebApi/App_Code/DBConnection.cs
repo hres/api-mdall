@@ -129,22 +129,27 @@ namespace MdallWebApi
             if ((!string.IsNullOrEmpty(status)) || (!string.IsNullOrEmpty(licenceName)))
             {
                 commandText += " WHERE";
-            }
-            if (status.Equals("active"))
-            {
-                commandText += " L.END_DATE IS NULL";
-                if (!string.IsNullOrEmpty(licenceName)) commandText += " AND";
-            }
-            else
-            {
-                commandText += " L.END_DATE IS NOT NULL";
-            }
-            if (!string.IsNullOrEmpty(licenceName))
-            {
-                commandText += " UPPER(L.LICENCE_NAME) LIKE '%" + licenceName.ToUpper().Trim() + "%'";
-            }
+                if (!string.IsNullOrEmpty(status))
+                {
+                    if (status.Equals("active"))
+                    {
+                        commandText += " L.END_DATE IS NULL";
+                        if (!string.IsNullOrEmpty(licenceName)) commandText += " AND";
+                    }
+                    else
+                    {
+                        commandText += " L.END_DATE IS NOT NULL";
+                        if (!string.IsNullOrEmpty(licenceName)) commandText += " AND";
+                    }
+                }
 
+                if (!string.IsNullOrEmpty(licenceName))
+                {
+                    commandText += " UPPER(L.LICENCE_NAME) LIKE '%" + licenceName.ToUpper().Trim() + "%'";
+                }
 
+            }
+            
             //System.Diagnostics.Debug.WriteLine(commandText);
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
@@ -538,20 +543,23 @@ namespace MdallWebApi
 
 
             string commandText = "SELECT DISTINCT C.* FROM PUB_ACS.PAS_LICENCE_COMPANY C, PUB_ACS.PAS_LICENCE L WHERE ";
-            if (!string.IsNullOrEmpty(status))
-            {
-                if (status.Equals("active"))
+            if (status.Equals(""))
+                {
+                    commandText += " C.COMPANY_ID = L.COMPANY_ID AND C.COMPANY_ID = " + id ;
+                    
+                }
+            else if (status.Equals("active"))
                 {
                     commandText += " C.COMPANY_ID = L.COMPANY_ID AND C.COMPANY_ID = " + id + " AND ";
                     commandText += " L.END_DATE IS NULL";
                 }
-                else
+            else
                 {
-                    commandText += " C.COMPANY_ID = L.COMPANY_ID AND C.COMPANY_ID = " + id;
+                    commandText += " C.COMPANY_ID = L.COMPANY_ID AND C.COMPANY_ID = " + id + " AND ";
                     //commandText += " C.COMPANY_ID = L.COMPANY_ID AND";
-                    //commandText += " L.END_DATE IS NOT NULL";
-                }
-            }
+                    commandText += " L.END_DATE IS NOT NULL";
+            }  
+           
 
             using (
 
@@ -627,6 +635,7 @@ namespace MdallWebApi
                     commandText += " AND D.END_DATE IS NOT NULL ";
                 }
             }
+
             if (!string.IsNullOrEmpty(deviceName))
             {
                 if (!string.IsNullOrEmpty(status)) commandText += " AND";
@@ -734,8 +743,26 @@ namespace MdallWebApi
             var items = new List<DeviceIdentifier>();
             string commandText = "SELECT DISTINCT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT";
 
-            if ((!string.IsNullOrEmpty(deviceIdentifierName)) || (licenceId > 0) || (deviceId > 0)) commandText += " WHERE";
+            if (!string.IsNullOrEmpty(status)||!string.IsNullOrEmpty(deviceIdentifierName)|| (licenceId > 0) || (deviceId > 0)) commandText += " WHERE";
+            if (!string.IsNullOrEmpty(status))
+            {
 
+                if (status.Equals("active"))
+                {
+                    commandText += " END_DATE IS NULL ";
+
+                }
+                else
+                {
+                    commandText += " END_DATE IS NOT NULL ";
+                }
+
+                if (!string.IsNullOrEmpty(deviceIdentifierName) || (licenceId > 0) || (deviceId > 0))
+                {
+                    commandText += " AND";
+
+                }
+            }
 
             if (!string.IsNullOrEmpty(deviceIdentifierName))
             {
@@ -746,7 +773,7 @@ namespace MdallWebApi
             if (licenceId > 0)
             {
                 if (!string.IsNullOrEmpty(deviceIdentifierName)) commandText += " AND";
-                commandText += "AND ORIGINAL_LICENCE_NO = " + licenceId;
+                commandText += " ORIGINAL_LICENCE_NO = " + licenceId;
             }
 
 
@@ -756,29 +783,7 @@ namespace MdallWebApi
                 commandText += " DEVICE_ID = " + deviceId;
             }
 
-            if (!string.IsNullOrEmpty(status))
-            {
-
-
-                //if(status.Contains("WHERE"))
-                //{
-                //    commandText += " AND ";
-                //}
-
-                //else
-                //{
-                //    commandText += " WHERE ";
-                //}
-
-                if (status.Equals("active"))
-                {
-                    commandText += " AND END_DATE IS NULL ";
-                }
-                else
-                {
-                    commandText += " AND END_DATE IS NOT NULL ";
-                }
-            }
+           
 
             commandText += " ORDER BY UPPER(DEVICE_IDENTIFIER)";
 
@@ -820,9 +825,10 @@ namespace MdallWebApi
             return items;
         }
 
-        public DeviceIdentifier GetDeviceIdentifierById(int id)
+        public List<DeviceIdentifier> GetDeviceIdentifierById(int id)
         {
-            var deviceIdentifier = new DeviceIdentifier();
+            //var deviceIdentifier = new DeviceIdentifier();
+            var items = new List<DeviceIdentifier>();
             string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT WHERE DEVICE_ID = " + id;
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
@@ -844,7 +850,7 @@ namespace MdallWebApi
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.device_identifier = dr["DEVICE_IDENTIFIER"] == DBNull.Value ? string.Empty : dr["DEVICE_IDENTIFIER"].ToString().Trim();
 
-                                deviceIdentifier = item;
+                                items.Add(item);
                             }
                         }
                     }
@@ -860,7 +866,7 @@ namespace MdallWebApi
                         con.Close();
                 }
             }
-            return deviceIdentifier;
+            return items;
         }
 
         public List<LicenceCompany> GetLicenceCompanyByCriteria(string lang, string status, string licenceName, Int64 licenceNumber, string companyName, int companyId)

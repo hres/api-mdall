@@ -14,10 +14,10 @@ namespace MdallWebApi.Models
             return _licenceDeviceIdentifiers;
         }
 
-        public DeviceIdentifier Get(int id)
+        public IEnumerable<DeviceIdentifier> Get(int id)
         {
-            _licenceDeviceIdentifier = dbConnection.GetDeviceIdentifierById(id);
-            return _licenceDeviceIdentifier;
+            _licenceDeviceIdentifiers = dbConnection.GetDeviceIdentifierById(id);
+            return _licenceDeviceIdentifiers;
         }
     }
 }

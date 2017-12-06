@@ -16,14 +16,9 @@ namespace MdallWebApi.Controllers
             return databasePlaceholder.GetAll(status, device_identifier, licence_id, device_id);
         }
      
-        public DeviceIdentifier GetDeviceIdentifierByID(int id)
+        public IEnumerable<DeviceIdentifier> GetDeviceIdentifierByID(int id)
         {
-            DeviceIdentifier deviceIdentifier = databasePlaceholder.Get(id);
-            if (deviceIdentifier == null)
-            {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            }
-            return deviceIdentifier;
+            return databasePlaceholder.Get(id);
         }
     }
 }
