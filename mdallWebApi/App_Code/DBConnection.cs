@@ -173,7 +173,7 @@ namespace MdallWebApi
                                 var item = new Licence();
                                 item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                 item.licence_status = dr["LICENCE_STATUS"] == DBNull.Value ? string.Empty : dr["LICENCE_STATUS"].ToString().Trim();
-                                item.application_id = dr["APPLICATION_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["APPLICATION_ID"]);
+                                //item.application_id = dr["APPLICATION_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["APPLICATION_ID"]);
                                 item.appl_risk_class = dr["APPL_RISK_CLASS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["APPL_RISK_CLASS"]);
                                 item.licence_name = dr["LICENCE_NAME"] == DBNull.Value ? string.Empty : dr["LICENCE_NAME"].ToString().Trim();
                                 item.first_licence_status_dt = dr["FIRST_LICENCE_STATUS_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_STATUS_DT"]);
@@ -261,7 +261,7 @@ namespace MdallWebApi
                                 {
                                     item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                     item.licence_status = dr["LICENCE_STATUS"] == DBNull.Value ? string.Empty : dr["LICENCE_STATUS"].ToString().Trim();
-                                    item.application_id = dr["APPLICATION_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["APPLICATION_ID"]);
+                                    //item.application_id = dr["APPLICATION_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["APPLICATION_ID"]);
                                     item.appl_risk_class = dr["APPL_RISK_CLASS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["APPL_RISK_CLASS"]);
                                     item.licence_name = dr["LICENCE_NAME"] == DBNull.Value ? string.Empty : dr["LICENCE_NAME"].ToString().Trim();
                                     item.first_licence_status_dt = dr["FIRST_LICENCE_STATUS_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_STATUS_DT"]);
@@ -410,7 +410,7 @@ namespace MdallWebApi
                                 var item = new Licence();
                                 item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                 item.licence_status = dr["LICENCE_STATUS"] == DBNull.Value ? string.Empty : dr["LICENCE_STATUS"].ToString().Trim();
-                                item.application_id = dr["APPLICATION_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["APPLICATION_ID"]);
+                                //item.application_id = dr["APPLICATION_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["APPLICATION_ID"]);
                                 item.appl_risk_class = dr["APPL_RISK_CLASS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["APPL_RISK_CLASS"]);
                                 item.licence_name = dr["LICENCE_NAME"] == DBNull.Value ? string.Empty : dr["LICENCE_NAME"].ToString().Trim();
                                 item.first_licence_status_dt = dr["FIRST_LICENCE_STATUS_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_STATUS_DT"]);
@@ -663,7 +663,7 @@ namespace MdallWebApi
                                 //item.deviceIdentifierList = new List<DeviceIdentifier>();
                                 item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                 item.device_id = dr["DEVICE_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DEVICE_ID"]);
-                                item.device_first_issue_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
+                                item.first_licence_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.trade_name = dr["TRADE_NAME"] == DBNull.Value ? string.Empty : dr["TRADE_NAME"].ToString().Trim();
 
@@ -715,7 +715,7 @@ namespace MdallWebApi
                                 var item = new Device();
                                 item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                 item.device_id = dr["DEVICE_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DEVICE_ID"]);
-                                item.device_first_issue_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
+                                item.first_licence_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.trade_name = dr["TRADE_NAME"] == DBNull.Value ? string.Empty : dr["TRADE_NAME"].ToString().Trim();
                                 device = item;
@@ -802,7 +802,7 @@ namespace MdallWebApi
                                 var item = new DeviceIdentifier();
                                 item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                 item.device_id = dr["DEVICE_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DEVICE_ID"]);
-                                item.identifier_first_issue_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
+                                item.first_licence_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.device_identifier = dr["DEVICE_IDENTIFIER"] == DBNull.Value ? string.Empty : dr["DEVICE_IDENTIFIER"].ToString().Trim();
 
@@ -846,7 +846,7 @@ namespace MdallWebApi
                                 var item = new DeviceIdentifier();
                                 item.original_licence_no = dr["ORIGINAL_LICENCE_NO"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ORIGINAL_LICENCE_NO"]);
                                 item.device_id = dr["DEVICE_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DEVICE_ID"]);
-                                item.identifier_first_issue_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
+                                item.first_licence_dt = dr["FIRST_LICENCE_DT"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FIRST_LICENCE_DT"]);
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.device_identifier = dr["DEVICE_IDENTIFIER"] == DBNull.Value ? string.Empty : dr["DEVICE_IDENTIFIER"].ToString().Trim();
 
