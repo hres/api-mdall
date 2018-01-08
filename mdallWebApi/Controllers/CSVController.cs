@@ -55,7 +55,7 @@ namespace MdallWebApi.Controllers
                     }
                     break;
 
-                case "identifer":
+                case "identifier":
                     var identifiers = dbConnection.GetAllDeviceIdentifier("active", "", 0, 0).ToList();
                     if (identifiers.Count > 0)
                     {
