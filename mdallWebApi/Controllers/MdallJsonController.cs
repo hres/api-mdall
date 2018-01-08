@@ -74,7 +74,7 @@ namespace MdallWebApi.Controllers
 
                             search.original_licence_no = licence.original_licence_no;
                             search.licence_status = licence.licence_status;
-                            search.application_id = licence.application_id;
+                            //search.application_id = licence.application_id;
                             search.company_id = licence.company_id;
                             search.licence_name = licence.licence_name;
                             if (company != null && company.company_id > 0)
@@ -107,7 +107,7 @@ namespace MdallWebApi.Controllers
                             {
                                 search.licence_name = licence.licence_name;
                                 search.licence_status = licence.licence_status;
-                                search.application_id = licence.application_id;
+                                //search.application_id = licence.application_id;
                                 company = companyController.GetCompanyById(licence.company_id, status);
                                 if (company != null && company.company_id > 0)
                                 {
@@ -156,7 +156,7 @@ namespace MdallWebApi.Controllers
                                 {
                                     search.licence_name = licence.licence_name;
                                     search.licence_status = licence.licence_status;
-                                    search.application_id = licence.application_id;
+                                    //search.application_id = licence.application_id;
                                     company = companyController.GetCompanyById(licence.company_id, status);
                                     if (company != null && company.company_id > 0)
                                     {
