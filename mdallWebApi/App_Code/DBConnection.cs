@@ -454,28 +454,26 @@ namespace MdallWebApi
         public List<Company> GetAllCompany(string status, string companyName)
         {
             var items = new List<Company>();
-            string commandText = "SELECT DISTINCT C.* FROM PUB_ACS.PAS_LICENCE_COMPANY C";
-
-            if ((!string.IsNullOrEmpty(status)) || (!string.IsNullOrEmpty(companyName))) commandText += " , PUB_ACS.PAS_LICENCE L WHERE ";
+            string commandText = "SELECT DISTINCT * FROM PUB_ACS.PAS_LICENCE_COMPANY ";                   
 
             if (!string.IsNullOrEmpty(status))
             {
-                if (status.Equals("active"))
-                {
-                    commandText += " C.COMPANY_ID = L.COMPANY_ID AND";
-                    commandText += " L.END_DATE IS NULL";
-                }
-                else
-                {
-                    commandText += " C.COMPANY_ID = L.COMPANY_ID";
-                    //commandText += " C.COMPANY_ID = L.COMPANY_ID AND";
-                    //commandText += " L.END_DATE IS NOT NULL";
-                }
+                commandText += "WHERE ";
+                commandText += " COMPANY_STATUS = '" + status.ToUpper().Trim() + "'";
+                
             }
             if (!string.IsNullOrEmpty(companyName))
             {
-                if (!string.IsNullOrEmpty(status)) commandText += " AND";
-                commandText += " UPPER(C.COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%'";
+                if (!string.IsNullOrEmpty(status))
+                {
+                    commandText += " AND";
+                    commandText += " UPPER(COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%'";
+                }
+                else {
+                    commandText += " WHERE";
+                    commandText += " UPPER(COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%'";
+
+                }
             }
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
@@ -539,27 +537,12 @@ namespace MdallWebApi
         public Company GetCompanyById(string status, int id)
         {
             var company = new Company();
-            // string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_COMPANY WHERE COMPANY_ID = " + id;
-
-
-            string commandText = "SELECT DISTINCT C.* FROM PUB_ACS.PAS_LICENCE_COMPANY C, PUB_ACS.PAS_LICENCE L WHERE ";
-            if (status.Equals(""))
-                {
-                    commandText += " C.COMPANY_ID = L.COMPANY_ID AND C.COMPANY_ID = " + id ;
-                    
-                }
-            else if (status.Equals("active"))
-                {
-                    commandText += " C.COMPANY_ID = L.COMPANY_ID AND C.COMPANY_ID = " + id + " AND ";
-                    commandText += " L.END_DATE IS NULL";
-                }
-            else
-                {
-                    commandText += " C.COMPANY_ID = L.COMPANY_ID AND C.COMPANY_ID = " + id + " AND ";
-                    //commandText += " C.COMPANY_ID = L.COMPANY_ID AND";
-                    commandText += " L.END_DATE IS NOT NULL";
-            }  
-           
+            string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_COMPANY WHERE COMPANY_ID = " + id;            
+            
+            if (!string.IsNullOrEmpty(status))
+            {
+                commandText += " AND COMPANY_STATUS = '" + status.ToUpper().Trim() + "'";
+            }
 
             using (
 
@@ -808,6 +791,7 @@ namespace MdallWebApi
 
                                 items.Add(item);
                             }
+                            var i= items.Count;
                         }
                     }
                 }
