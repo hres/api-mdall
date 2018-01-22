@@ -115,7 +115,7 @@ namespace MdallWebApi
             System.Diagnostics.Debug.WriteLine("Done");
         }
 
-        public List<Licence> GetAllLicence(string status="", string licenceName="")
+        public List<Licence> GetAllLicence(string state="", string licenceName="")
         {
             /*
             DateTime invokeTime = DateTime.Now;
@@ -126,12 +126,12 @@ namespace MdallWebApi
 
             var items = new List<Licence>();
             string commandText = "SELECT DISTINCT L.* FROM PUB_ACS.PAS_LICENCE L";
-            if ((!string.IsNullOrEmpty(status)) || (!string.IsNullOrEmpty(licenceName)))
+            if ((!string.IsNullOrEmpty(state)) || (!string.IsNullOrEmpty(licenceName)))
             {
                 commandText += " WHERE";
-                if (!string.IsNullOrEmpty(status))
+                if (!string.IsNullOrEmpty(state))
                 {
-                    if (status.Equals("active"))
+                    if (state.Equals("active"))
                     {
                         commandText += " L.END_DATE IS NULL";
                         if (!string.IsNullOrEmpty(licenceName)) commandText += " AND";
@@ -227,14 +227,14 @@ namespace MdallWebApi
             return items;
         }
 
-        public Licence GetLicenceById(int id, string status)
+        public Licence GetLicenceById(int id, string state)
         {
             var item = new Licence();
             string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE L";
             commandText += " WHERE";
-            if (!string.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(state))
             {
-                if (status.Equals("active"))
+                if (state.Equals("active"))
                 {
                     commandText += " L.END_DATE IS NULL AND";
                 }
@@ -372,14 +372,14 @@ namespace MdallWebApi
         //    }
         //    return item;
         //}
-        public List<Licence> GetAllLicenceByCompanyId(int company_id, string status)
+        public List<Licence> GetAllLicenceByCompanyId(int company_id, string state)
         {
             var items = new List<Licence>();
             string commandText = "SELECT UNIQUE L.* FROM PUB_ACS.PAS_LICENCE L, PUB_ACS.PAS_LICENCE_DEVICE D ";
             commandText += " WHERE ";
-            if (!string.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(state))
             {
-                if (status.Equals("active"))
+                if (state.Equals("active"))
                 {
                     commandText += " L.END_DATE IS NULL AND";
                 }
@@ -593,12 +593,12 @@ namespace MdallWebApi
             }
             return company;
         }
-        public List<Device> GetAllDevice(string status, string deviceName, int licenceId)
+        public List<Device> GetAllDevice(string state, string deviceName, int licenceId)
         {
             var items = new List<Device>();
             string commandText = "SELECT DISTINCT D.* FROM PUB_ACS.PAS_LICENCE_DEVICE D";
 
-            if ((!string.IsNullOrEmpty(status)) || (licenceId > 0))
+            if ((!string.IsNullOrEmpty(state)) || (licenceId > 0))
             {
                 commandText += " , PUB_ACS.PAS_LICENCE L WHERE D.ORIGINAL_LICENCE_NO = L.ORIGINAL_LICENCE_NO";
             }
@@ -606,9 +606,9 @@ namespace MdallWebApi
             {
                 commandText += " WHERE";
             }
-            if (!string.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(state))
             {
-                if (status.Equals("active"))
+                if (state.Equals("active"))
                 {
                     commandText += " AND L.END_DATE IS NULL AND D.END_DATE IS NULL";
                 }
@@ -621,7 +621,7 @@ namespace MdallWebApi
 
             if (!string.IsNullOrEmpty(deviceName))
             {
-                if (!string.IsNullOrEmpty(status)) commandText += " AND";
+                if (!string.IsNullOrEmpty(state)) commandText += " AND";
                 commandText += " D.TRADE_NAME LIKE '%" + deviceName.ToUpper().Trim() + "%'";
             }
             else if (licenceId > 0)
@@ -721,16 +721,16 @@ namespace MdallWebApi
         }
 
 
-        public List<DeviceIdentifier> GetAllDeviceIdentifier(string status="", string deviceIdentifierName="", int licenceId=0, int deviceId=0)
+        public List<DeviceIdentifier> GetAllDeviceIdentifier(string state="", string deviceIdentifierName="", int licenceId=0, int deviceId=0)
         {
             var items = new List<DeviceIdentifier>();
             string commandText = "SELECT DISTINCT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT";
 
-            if (!string.IsNullOrEmpty(status)||!string.IsNullOrEmpty(deviceIdentifierName)|| (licenceId > 0) || (deviceId > 0)) commandText += " WHERE";
-            if (!string.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(state)||!string.IsNullOrEmpty(deviceIdentifierName)|| (licenceId > 0) || (deviceId > 0)) commandText += " WHERE";
+            if (!string.IsNullOrEmpty(state))
             {
 
-                if (status.Equals("active"))
+                if (state.Equals("active"))
                 {
                     commandText += " END_DATE IS NULL ";
 
@@ -791,7 +791,7 @@ namespace MdallWebApi
 
                                 items.Add(item);
                             }
-                            var i= items.Count;
+                            
                         }
                     }
                 }
@@ -853,7 +853,7 @@ namespace MdallWebApi
             return items;
         }
 
-        public List<LicenceCompany> GetLicenceCompanyByCriteria(string lang, string status, string licenceName, Int64 licenceNumber, string companyName, int companyId)
+        public List<LicenceCompany> GetLicenceCompanyByCriteria(string lang, string state, string licenceName, Int64 licenceNumber, string companyName, int companyId)
         {
 
             var items = new List<LicenceCompany>();
@@ -872,9 +872,9 @@ namespace MdallWebApi
             commandText += " LEFT OUTER JOIN PUB_ACS.PAS_LICENCE_COMPANY C ON L.COMPANY_ID = C.COMPANY_ID";
             //commandText += " LEFT OUTER JOIN PUB_ACS.PAS_LICENCE_TYPE T ON L.LICENCE_TYPE_CD = T.LICENCE_TYPE_CD";
             commandText += " WHERE";
-            if (!string.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(state))
             {
-                if (status.Equals("active"))
+                if (state.Equals("active"))
                 {
                     commandText += " L.END_DATE IS NULL";
                 }
@@ -883,7 +883,7 @@ namespace MdallWebApi
                     commandText += " L.END_DATE IS NOT NULL";
                 }
             }
-            if ((!string.IsNullOrEmpty(status)) && (!string.IsNullOrEmpty(licenceName)) || (licenceNumber > 0) || (!string.IsNullOrEmpty(companyName)) || (companyId > 0))
+            if ((!string.IsNullOrEmpty(state)) && (!string.IsNullOrEmpty(licenceName)) || (licenceNumber > 0) || (!string.IsNullOrEmpty(companyName)) || (companyId > 0))
             {
                 commandText += " AND";
             }
@@ -960,7 +960,7 @@ namespace MdallWebApi
             return items;
         }
 
-        public List<LicenceCompany> GetLicenceCompanyByCriteria(string lang, string status, int companyId)
+        public List<LicenceCompany> GetLicenceCompanyByCriteria(string lang, string state, int companyId)
         {
 
             var items = new List<LicenceCompany>();
@@ -979,9 +979,9 @@ namespace MdallWebApi
             commandText += " LEFT OUTER JOIN PUB_ACS.PAS_LICENCE_COMPANY C ON L.COMPANY_ID = C.COMPANY_ID";
             commandText += " LEFT OUTER JOIN PUB_ACS.PAS_LICENCE_TYPE T ON L.LICENCE_TYPE_CD = T.LICENCE_TYPE_CD";
             commandText += " WHERE";
-            if (!string.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(state))
             {
-                if (status.Equals("active"))
+                if (state.Equals("active"))
                 {
                     commandText += " L.END_DATE IS NULL";
                 }
@@ -990,7 +990,7 @@ namespace MdallWebApi
                     commandText += " L.END_DATE IS NOT NULL";
                 }
             }
-            if ((!string.IsNullOrEmpty(status)) && (companyId > 0))
+            if ((!string.IsNullOrEmpty(state)) && (companyId > 0))
             {
                 commandText += " AND";
             }

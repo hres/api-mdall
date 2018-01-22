@@ -8,12 +8,12 @@ namespace MdallWebApi.Models
 {
     interface ILicenceRepository
     {
-        IEnumerable<Licence> GetAll(string status = "", string licenceName = "");
+        IEnumerable<Licence> GetAll(string state = "", string licenceName = "");
 
-        IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string status = "");
+        IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string state = "");
         
 
-        Licence Get(int id, string status = "");
+        Licence Get(int id, string state = "");
         
     }
 }

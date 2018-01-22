@@ -10,9 +10,9 @@ namespace MdallWebApi.Models
 
         DBConnection dbConnection = new DBConnection("en");
 
-        public IEnumerable<Device> GetAll(string status, string deviceName, int licenceId)
+        public IEnumerable<Device> GetAll(string state, string deviceName, int licenceId)
         {
-            _devices = dbConnection.GetAllDevice(status, deviceName, licenceId);
+            _devices = dbConnection.GetAllDevice(state, deviceName, licenceId);
             return _devices;
         }
 

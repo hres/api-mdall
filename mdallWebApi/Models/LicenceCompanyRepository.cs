@@ -10,16 +10,16 @@ namespace MdallWebApi.Models
         private LicenceCompany _licencecompany = new LicenceCompany();
         DBConnection dbConnection = new DBConnection("en");
         
-        public IEnumerable<LicenceCompany> GetAll(string lang, string status = "", string licence_name = "", long licence_id = 0, string company_name = "", int company_id = 0)
+        public IEnumerable<LicenceCompany> GetAll(string lang, string state = "", string licence_name = "", long licence_id = 0, string company_name = "", int company_id = 0)
         {
-            _licencecompanies = dbConnection.GetLicenceCompanyByCriteria(lang, status, licence_name, licence_id, company_name, company_id);
+            _licencecompanies = dbConnection.GetLicenceCompanyByCriteria(lang, state, licence_name, licence_id, company_name, company_id);
 
             return _licencecompanies;
         }
 
-        public LicenceCompany Get(string lang, long licence_id, string status = "")
+        public LicenceCompany Get(string lang, long licence_id, string state = "")
         {
-            _licencecompany = dbConnection.GetLicenceCompanyById(lang, licence_id, status);
+            _licencecompany = dbConnection.GetLicenceCompanyById(lang, licence_id, state);
             return _licencecompany;
         }
 
