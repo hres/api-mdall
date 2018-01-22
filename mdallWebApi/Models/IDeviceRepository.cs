@@ -8,7 +8,7 @@ namespace MdallWebApi.Models
 {
     interface IDeviceRepository
     {
-        IEnumerable<Device> GetAll(string status, string deviceName, int licenceId);
+        IEnumerable<Device> GetAll(string state, string deviceName, int licenceId);
         Device Get(int id);
         //IEnumerable<ViewLicenceDevice> GetAllLicenceDeviceByLicenceId(string licenceId, string lang);
     }

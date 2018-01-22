@@ -12,10 +12,10 @@ namespace MdallWebApi.Controllers
     {
         static readonly IDeviceRepository databasePlaceholder = new DeviceRepository();
 
-        public IEnumerable<Device> GetAllDevice(string status = "", string device_name = "", int licence_id = 0)
+        public IEnumerable<Device> GetAllDevice(string state = "", string device_name = "", int licence_id = 0)
         {
 
-            return databasePlaceholder.GetAll(status, device_name, licence_id);
+            return databasePlaceholder.GetAll(state, device_name, licence_id);
         }
 
 
