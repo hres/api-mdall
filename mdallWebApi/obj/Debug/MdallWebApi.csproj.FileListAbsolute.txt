@@ -100,4 +100,3 @@ C:\Users\hcuser\Documents\api-mdall\MdallWebApi\bin\MdallWebApi.pdb
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csproj.App.config
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.dll
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.pdb
-C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csprojResolveAssemblyReference.cache
