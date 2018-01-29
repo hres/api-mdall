@@ -9,7 +9,7 @@ namespace MdallWebApi.Models
     {
         public int original_licence_no { get; set; }
         public String licence_status { get; set; }
-        public int application_id { get; set; }
+        //public int application_id { get; set; }
         public int appl_risk_class { get; set; }
         public String licence_name { get; set; }
         public DateTime? first_licence_status_dt { get; set; }

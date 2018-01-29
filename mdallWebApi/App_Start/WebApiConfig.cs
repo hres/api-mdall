@@ -20,23 +20,23 @@ namespace MdallWebApi
             //Enable CORS support
             config.Routes.MapHttpRoute(
                name: "Api UriPathExtension ID, status, licence, device or company",
-               routeTemplate: "api/{controller}/{id}/{status}/{licence}/{companyId}.{ext}",
+               routeTemplate: "{controller}/{id}/{state}/{status}/{licence}/{companyId}.{ext}",
                defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "Api UriPathExtension ID, licence, device or company",
-                routeTemplate: "api/{controller}/{id}/{licence}/{companyId}.{ext}",
+                routeTemplate: "{controller}/{id}/{licence}/{companyId}.{ext}",
                 defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional});
             config.Routes.MapHttpRoute(
                 name: "Api UriPathExtension lang, status, licence id, company id, licence name, company name",
-                routeTemplate: "api/{controller}/{lang}/{status}/{licence_id}/{licence_name}/{company_id}/{company_name}/{code}.{ext}",
+                routeTemplate: "{controller}/{lang}/{state}/{status}/{licence_id}/{licence_name}/{company_id}/{company_name}/{code}.{ext}",
                 defaults: new { lang = RouteParameter.Optional, status = RouteParameter.Optional,  licence_id = RouteParameter.Optional, company_id = RouteParameter.Optional, licence_name = RouteParameter.Optional, company_name = RouteParameter.Optional, code = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                name: "Api UriPathExtension DIN",
-               routeTemplate: "api/{controller}/{din}.{ext}",
+               routeTemplate: "{controller}/{din}.{ext}",
                defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
@@ -45,14 +45,14 @@ namespace MdallWebApi
             config.Formatters.JsonFormatter.SupportedEncodings.Add(Encoding.GetEncoding("utf-8"));
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd" });
             config.Formatters.XmlFormatter.MediaTypeMappings.Add(new QueryStringMapping("type", "xml", new MediaTypeHeaderValue("application/xml")));
-            
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             //explore this config.Formatters...CsvFormatter.MediaTypeMappings.Add(new QueryStringMapping("type", "csv", new MediaTypeHeaderValue("text/csv")));
 
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
             // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.
             // For more information, visit http://go.microsoft.com/fwlink/?LinkId=279712.
             //config.EnableQuerySupport();
-          
+
             // To disable tracing in your application, please comment out or remove the following line of code
             // For more information, refer to: http://www.asp.net/web-api
             config.EnableSystemDiagnosticsTracing();

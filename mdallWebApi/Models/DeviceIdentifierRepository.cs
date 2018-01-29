@@ -8,16 +8,16 @@ namespace MdallWebApi.Models
         private DeviceIdentifier _licenceDeviceIdentifier = new DeviceIdentifier();
         DBConnection dbConnection = new DBConnection("en");
 
-        public IEnumerable<DeviceIdentifier> GetAll(string status, string deviceIdentifierName, int licenceId, int deviceId)
+        public IEnumerable<DeviceIdentifier> GetAll(string state, string deviceIdentifierName, int licenceId, int deviceId)
         {
-            _licenceDeviceIdentifiers = dbConnection.GetAllDeviceIdentifier(status, deviceIdentifierName, licenceId, deviceId);
+            _licenceDeviceIdentifiers = dbConnection.GetAllDeviceIdentifier(state, deviceIdentifierName, licenceId, deviceId);
             return _licenceDeviceIdentifiers;
         }
 
-        public DeviceIdentifier Get(int id)
+        public IEnumerable<DeviceIdentifier> Get(int id)
         {
-            _licenceDeviceIdentifier = dbConnection.GetDeviceIdentifierById(id);
-            return _licenceDeviceIdentifier;
+            _licenceDeviceIdentifiers = dbConnection.GetDeviceIdentifierById(id);
+            return _licenceDeviceIdentifiers;
         }
     }
 }

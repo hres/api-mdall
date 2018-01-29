@@ -40,7 +40,7 @@ namespace MdallWebApi.Controllers
                     }
                     break;
                 case "company":
-                    var companies = dbConnection.GetAllCompany("active", "").ToList();
+                    var companies = dbConnection.GetAllCompany("a", "").ToList();
                     if (companies.Count > 0)
                     {   
                         json = JsonConvert.SerializeObject(companies);
@@ -55,7 +55,7 @@ namespace MdallWebApi.Controllers
                     }
                     break;
 
-                case "identifer":
+                case "identifier":
                     var identifiers = dbConnection.GetAllDeviceIdentifier("active", "", 0, 0).ToList();
                     if (identifiers.Count > 0)
                     {

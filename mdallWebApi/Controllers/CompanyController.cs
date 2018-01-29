@@ -18,9 +18,9 @@ namespace MdallWebApi.Controllers
             return databasePlaceholder.GetAll(status, company_name);
         }
 
-        public Company GetCompanyById( int id, string lang, string status = "")
+        public Company GetCompanyById( int id, string status = "")
         {
-            Company company = databasePlaceholder.Get(id, lang, status);
+            Company company = databasePlaceholder.Get(id,status);
             if (company == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
