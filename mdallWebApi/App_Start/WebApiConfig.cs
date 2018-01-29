@@ -20,7 +20,7 @@ namespace MdallWebApi
             //Enable CORS support
             config.Routes.MapHttpRoute(
                name: "Api UriPathExtension ID, status, licence, device or company",
-               routeTemplate: "{controller}/{id}/{status}/{licence}/{companyId}.{ext}",
+               routeTemplate: "{controller}/{id}/{state}/{status}/{licence}/{companyId}.{ext}",
                defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "Api UriPathExtension ID, licence, device or company",
@@ -28,7 +28,7 @@ namespace MdallWebApi
                 defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional});
             config.Routes.MapHttpRoute(
                 name: "Api UriPathExtension lang, status, licence id, company id, licence name, company name",
-                routeTemplate: "{controller}/{lang}/{status}/{licence_id}/{licence_name}/{company_id}/{company_name}/{code}.{ext}",
+                routeTemplate: "{controller}/{lang}/{state}/{status}/{licence_id}/{licence_name}/{company_id}/{company_name}/{code}.{ext}",
                 defaults: new { lang = RouteParameter.Optional, status = RouteParameter.Optional,  licence_id = RouteParameter.Optional, company_id = RouteParameter.Optional, licence_name = RouteParameter.Optional, company_name = RouteParameter.Optional, code = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                name: "Api UriPathExtension DIN",
