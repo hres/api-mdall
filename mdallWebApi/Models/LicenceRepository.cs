@@ -11,9 +11,9 @@ namespace MdallWebApi.Models
         private SbdLocation location = new SbdLocation();
         DBConnection dbConnection = new DBConnection("en");
 
-        public IEnumerable<Licence> GetAll(string state = "", string licenceName = "", string lang="")
+        public IEnumerable<Licence> GetAll(string state = "", string licenceName = "", string lang = "")
         {
-            _licenses = dbConnection.GetAllLicence(state, licenceName,lang);
+            _licenses = dbConnection.GetAllLicence(state, licenceName, lang);
             return _licenses;
         }
 
@@ -23,14 +23,14 @@ namespace MdallWebApi.Models
             return _licenses;
         }
 
-        public Licence Get(int id, string state = "", string lang="")
+        public Licence Get(int id, string state = "", string lang = "")
 
-        {            
-                _licence = dbConnection.GetLicenceById(id, state,lang);            
-            
+        {
+            _licence = dbConnection.GetLicenceById(id, state, lang);
+
 
             return _licence;
         }
-        
+
     }
 }

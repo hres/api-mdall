@@ -448,7 +448,7 @@ namespace MdallWebApi
                                     LicenceType licenceType = GetLicenceTypeByCode(item.licence_type_cd);
                                     item.licence_type_desc = licenceType.licence_type_desc;
                                 }
-                                SbdLocation location = GetSbdLocationById(item.original_licence_no);
+                                //SbdLocation location = GetSbdLocationById(item.original_licence_no);
                                 //if (location.original_licence_no != 0)
                                 //{
                                 //    item.has_location = true;
