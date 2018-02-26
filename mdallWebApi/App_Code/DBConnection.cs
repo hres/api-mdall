@@ -115,7 +115,7 @@ namespace MdallWebApi
             System.Diagnostics.Debug.WriteLine("Done");
         }
 
-        public List<Licence> GetAllLicence(string state="", string licenceName="")
+        public List<Licence> GetAllLicence(string state="", string licenceName="", string lang="")
         {
             /*
             DateTime invokeTime = DateTime.Now;
@@ -125,7 +125,18 @@ namespace MdallWebApi
             */
 
             var items = new List<Licence>();
-            string commandText = "SELECT DISTINCT L.* FROM PUB_ACS.PAS_LICENCE L";
+            string commandText = "SELECT L.* ";
+            if ( lang == "en" )
+            {
+                commandText += ", T.LICENCE_TYPE_DESC_E LICENCE_TYPE_DESC "; 
+            }
+            else
+            {
+                commandText += ", T.LICENCE_TYPE_DESC_F LICENCE_TYPE_DESC ";
+            }
+            commandText += " FROM PUB_ACS.PAS_LICENCE L ";
+            commandText += " LEFT JOIN PUB_ACS.PAS_LICENCE_TYPE T ";
+            commandText += " ON L.LICENCE_TYPE_CD =T.LICENCE_TYPE_CD ";
             if ((!string.IsNullOrEmpty(state)) || (!string.IsNullOrEmpty(licenceName)))
             {
                 commandText += " WHERE";
@@ -133,12 +144,12 @@ namespace MdallWebApi
                 {
                     if (state.Equals("active"))
                     {
-                        commandText += " L.END_DATE IS NULL";
+                        commandText += " L.END_DATE IS NULL ";
                         if (!string.IsNullOrEmpty(licenceName)) commandText += " AND";
                     }
-                    else
+                    if (state.Equals("archived"))
                     {
-                        commandText += " L.END_DATE IS NOT NULL";
+                        commandText += " L.END_DATE IS NOT NULL ";
                         if (!string.IsNullOrEmpty(licenceName)) commandText += " AND";
                     }
                 }
@@ -147,6 +158,7 @@ namespace MdallWebApi
                 {
                     commandText += " UPPER(L.LICENCE_NAME) LIKE '%" + licenceName.ToUpper().Trim() + "%'";
                 }
+                
 
             }
             
@@ -181,13 +193,14 @@ namespace MdallWebApi
                                 item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                 item.licence_type_cd = dr["LICENCE_TYPE_CD"] == DBNull.Value ? string.Empty : dr["LICENCE_TYPE_CD"].ToString().Trim();
                                 item.company_id = dr["COMPANY_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_ID"]);
+                                item.licence_type_desc = dr["LICENCE_TYPE_DESC"] == DBNull.Value ? string.Empty : dr["LICENCE_TYPE_DESC"].ToString().Trim();
                                 //item.has_location = false;
 
-                                if (!string.IsNullOrWhiteSpace(item.licence_type_cd))
-                                {
-                                    LicenceType licenceType = GetLicenceTypeByCode(item.licence_type_cd);
-                                    item.licence_type_desc = licenceType.licence_type_desc;
-                                }
+                                //if (!string.IsNullOrWhiteSpace(item.licence_type_cd))
+                                //{
+                                //    LicenceType licenceType = GetLicenceTypeByCode(item.licence_type_cd);
+                                //    item.licence_type_desc = licenceType.licence_type_desc;
+                                //}
                                 //SbdLocation location = GetSbdLocationById(item.original_licence_no);
                                 //if(location.original_licence_no != 0)
                                 //{
@@ -226,10 +239,22 @@ namespace MdallWebApi
             return items;
         }
 
-        public Licence GetLicenceById(int id, string state)
+        public Licence GetLicenceById(int id, string state,string lang)
         {
             var item = new Licence();
-            string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE L";
+            string commandText = "SELECT L.* ";
+            if (lang == "en")
+            {
+                commandText += ", T.LICENCE_TYPE_DESC_E LICENCE_TYPE_DESC ";
+            }
+            else
+            {
+                commandText += ", T.LICENCE_TYPE_DESC_F LICENCE_TYPE_DESC ";
+            }
+            commandText += " FROM PUB_ACS.PAS_LICENCE L ";
+            commandText += " LEFT JOIN PUB_ACS.PAS_LICENCE_TYPE T ";
+            commandText += " ON L.LICENCE_TYPE_CD =T.LICENCE_TYPE_CD ";
+
             commandText += " WHERE";
             if (!string.IsNullOrEmpty(state))
             {
@@ -237,12 +262,12 @@ namespace MdallWebApi
                 {
                     commandText += " L.END_DATE IS NULL AND";
                 }
-                else
+                if (state.Equals("archived"))
                 {
-                    //commandText += " L.END_DATE IS NOT NULL AND";
+                    commandText += " L.END_DATE IS NOT NULL AND";
                 }
             }
-            commandText += " L.ORIGINAL_LICENCE_NO = :id";
+            commandText += " L.ORIGINAL_LICENCE_NO = " +id;
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
@@ -251,7 +276,7 @@ namespace MdallWebApi
                     try
                     {
                         con.Open();
-                        cmd.Parameters.Add(new OracleParameter("id", id));
+                        //cmd.Parameters.Add(new OracleParameter("id", id));
                         using (OracleDataReader dr = cmd.ExecuteReader())
                         {
                             if (dr.HasRows)
@@ -268,12 +293,13 @@ namespace MdallWebApi
                                     item.end_date = dr["END_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["END_DATE"]);
                                     item.licence_type_cd = dr["LICENCE_TYPE_CD"] == DBNull.Value ? string.Empty : dr["LICENCE_TYPE_CD"].ToString().Trim();
                                     item.company_id = dr["COMPANY_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_ID"]);
+                                    item.licence_type_desc = dr["LICENCE_TYPE_DESC"] == DBNull.Value ? string.Empty : dr["LICENCE_TYPE_DESC"].ToString().Trim();
                                     //item.has_location = false;
-                                    if (!string.IsNullOrWhiteSpace(item.licence_type_cd))
-                                    {
-                                        LicenceType licenceType = GetLicenceTypeByCode(item.licence_type_cd);
-                                        item.licence_type_desc = licenceType.licence_type_desc;
-                                    }
+                                    //if (!string.IsNullOrWhiteSpace(item.licence_type_cd))
+                                    //{
+                                    //    LicenceType licenceType = GetLicenceTypeByCode(item.licence_type_cd);
+                                    //    item.licence_type_desc = licenceType.licence_type_desc;
+                                    //}
 
 
                                     //SbdLocation location = GetSbdLocationById(item.original_licence_no);
