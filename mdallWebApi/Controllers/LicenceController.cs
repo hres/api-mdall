@@ -27,10 +27,10 @@ namespace MdallWebApi.Controllers
         }
       
 
-        public IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string state = "")
+        public IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string state = "", string lang = "en")
         {
 
-            return databasePlaceholder.GetAllLicenceByCompanyId(company_id, state);
+            return databasePlaceholder.GetAllLicenceByCompanyId(company_id, state,lang);
         }
         
     }

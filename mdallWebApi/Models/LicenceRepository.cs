@@ -17,9 +17,9 @@ namespace MdallWebApi.Models
             return _licenses;
         }
 
-        public IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string state = "")
+        public IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string state = "", string lang = "en")
         {
-            _licenses = dbConnection.GetAllLicenceByCompanyId(company_id, state);
+            _licenses = dbConnection.GetAllLicenceByCompanyId(company_id, state,lang);
             return _licenses;
         }
 

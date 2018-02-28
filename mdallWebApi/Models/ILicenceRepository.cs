@@ -10,7 +10,7 @@ namespace MdallWebApi.Models
     {
         IEnumerable<Licence> GetAll(string state = "", string licenceName = "", string lang="");
 
-        IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string state = "");
+        IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string state = "", string lang = "");
         
 
         Licence Get(int id, string state = "",string lang="");
