@@ -267,7 +267,7 @@ namespace MdallWebApi
                     commandText += " L.END_DATE IS NOT NULL AND";
                 }
             }
-            commandText += " L.ORIGINAL_LICENCE_NO = " +id;
+            commandText += " L.ORIGINAL_LICENCE_NO = :id ";
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
@@ -276,7 +276,7 @@ namespace MdallWebApi
                     try
                     {
                         con.Open();
-                        //cmd.Parameters.Add(new OracleParameter("id", id));
+                        cmd.Parameters.Add(new OracleParameter(":id", id));
                         using (OracleDataReader dr = cmd.ExecuteReader())
                         {
                             if (dr.HasRows)
@@ -429,13 +429,14 @@ namespace MdallWebApi
 
                 }
             }
-            commandText += " L.COMPANY_ID = " + company_id;
+            commandText += " L.COMPANY_ID = :company_id ";
             commandText += " ORDER BY UPPER(L.ORIGINAL_LICENCE_NO)";
             using (
 
             OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":company_id", company_id);
                 try
                 {
                     con.Open();
@@ -498,7 +499,7 @@ namespace MdallWebApi
             if (!string.IsNullOrEmpty(status))
             {
                 commandText += "WHERE ";
-                commandText += " COMPANY_STATUS = '" + status.ToUpper().Trim() + "'";
+                commandText += " COMPANY_STATUS = :status "; 
                 
             }
             if (!string.IsNullOrEmpty(companyName))
@@ -506,11 +507,11 @@ namespace MdallWebApi
                 if (!string.IsNullOrEmpty(status))
                 {
                     commandText += " AND";
-                    commandText += " UPPER(COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%'";
+                    commandText += " UPPER(COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%' ";
                 }
                 else {
                     commandText += " WHERE";
-                    commandText += " UPPER(COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%'";
+                    commandText += " UPPER(COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%' ";
 
                 }
             }
@@ -518,6 +519,8 @@ namespace MdallWebApi
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":status", status.ToUpper().Trim());
+                
                 try
                 {
                     con.Open();
@@ -576,11 +579,11 @@ namespace MdallWebApi
         public Company GetCompanyById(string status, int id)
         {
             var company = new Company();
-            string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_COMPANY WHERE COMPANY_ID = " + id;            
+            string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_COMPANY WHERE COMPANY_ID = :id ";            
             
             if (!string.IsNullOrEmpty(status))
             {
-                commandText += " AND COMPANY_STATUS = '" + status.ToUpper().Trim() + "'";
+                commandText += " AND COMPANY_STATUS = :status ";
             }
 
             using (
@@ -588,6 +591,12 @@ namespace MdallWebApi
                 OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
+                if (!string.IsNullOrEmpty(status))
+                {
+                    cmd.Parameters.Add(":status", status.ToUpper().Trim());
+                }
+               
                 try
                 {
                     con.Open();
@@ -661,17 +670,19 @@ namespace MdallWebApi
             if (!string.IsNullOrEmpty(deviceName))
             {
                 if (!string.IsNullOrEmpty(state)) commandText += " AND";
-                commandText += " D.TRADE_NAME LIKE '%" + deviceName.ToUpper().Trim() + "%'";
+                commandText += " D.TRADE_NAME LIKE '%" + deviceName.ToUpper().Trim() + "%' ";
             }
             else if (licenceId > 0)
             {
 
-                commandText += " AND L.ORIGINAL_LICENCE_NO = " + licenceId;
+                commandText += " AND L.ORIGINAL_LICENCE_NO = :licenceId ";
             }
             commandText += " ORDER BY UPPER(D.TRADE_NAME)";
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":licenceId", licenceId);
+               
                 try
                 {
                     con.Open();
@@ -718,13 +729,14 @@ namespace MdallWebApi
         public Device GetDeviceById(int id)
         {
             var device = new Device();
-            string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_DEVICE WHERE DEVICE_ID = " + id;
+            string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_DEVICE WHERE DEVICE_ID = :id ";
 
             using (
 
                 OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -795,14 +807,14 @@ namespace MdallWebApi
             if (licenceId > 0)
             {
                 if (!string.IsNullOrEmpty(deviceIdentifierName)) commandText += " AND";
-                commandText += " ORIGINAL_LICENCE_NO = " + licenceId;
+                commandText += " ORIGINAL_LICENCE_NO = :licenceId ";
             }
 
 
             if (deviceId > 0)
             {
                 if ((!string.IsNullOrEmpty(deviceIdentifierName)) || (licenceId > 0)) commandText += " AND";
-                commandText += " DEVICE_ID = " + deviceId;
+                commandText += " DEVICE_ID = :deviceId ";
             }
 
            
@@ -812,6 +824,8 @@ namespace MdallWebApi
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":licenceId", licenceId);
+                cmd.Parameters.Add(":deviceId", deviceId);
                 try
                 {
                     con.Open();
@@ -852,11 +866,12 @@ namespace MdallWebApi
         {
             //var deviceIdentifier = new DeviceIdentifier();
             var items = new List<DeviceIdentifier>();
-            string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT WHERE DEVICE_ID = " + id;
+            string commandText = "SELECT * FROM PUB_ACS.PAS_LICENCE_DEV_IDENT WHERE DEVICE_ID = :id ";
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -1125,7 +1140,7 @@ namespace MdallWebApi
             //}
             if (licence_id > 0)
             {
-                commandText += " AND L.ORIGINAL_LICENCE_NO = " + licence_id;
+                commandText += " AND L.ORIGINAL_LICENCE_NO = :licence_id";
             }
 
             using (
@@ -1133,6 +1148,7 @@ namespace MdallWebApi
                 OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":licence_id", licence_id);
                 try
                 {
                     con.Open();
@@ -1191,7 +1207,7 @@ namespace MdallWebApi
             commandText += " FROM PUB_ACS.PAS_LICENCE_DEVICE PLD, PUB_ACS.PAS_LICENCE_DEV_IDENT PLDI ";
             commandText += " WHERE PLD.ORIGINAL_LICENCE_NO = PLDI.ORIGINAL_LICENCE_NO ";
             commandText += " AND PLD.DEVICE_ID = PLDI.DEVICE_ID ";
-            commandText += " AND PLD.ORIGINAL_LICENCE_NO = " + licenceId;
+            commandText += " AND PLD.ORIGINAL_LICENCE_NO = :licenceId ";
             commandText += " ORDER BY UPPER(PLD.TRADE_NAME) ";
 
             using (
@@ -1199,6 +1215,7 @@ namespace MdallWebApi
                 OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":licenceId",licenceId);
                 try
                 {
                     con.Open();
@@ -1303,11 +1320,12 @@ namespace MdallWebApi
                 commandText += " LICENCE_TYPE_DESC_E AS LICENCE_TYPE_DESC";
             }
             commandText += " FROM PUB_ACS.PAS_LICENCE_TYPE";
-            commandText += " WHERE LICENCE_TYPE_CD = '" + code.Trim() + "'";
+            commandText += " WHERE LICENCE_TYPE_CD = :code ";
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":code", code.Trim());
                 try
                 {
                     con.Open();
@@ -1399,11 +1417,12 @@ namespace MdallWebApi
         public SbdLocation GetSbdLocationById(int id)
         {
             var sbdLocationInfo = new SbdLocation();
-            string commandText = "SELECT * FROM PUB_ACS.PAS_SBD_LOCATION_INFO WHERE ORIGINAL_LICENCE_NO = " + id;
+            string commandText = "SELECT * FROM PUB_ACS.PAS_SBD_LOCATION_INFO WHERE ORIGINAL_LICENCE_NO = :id ";
 
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
