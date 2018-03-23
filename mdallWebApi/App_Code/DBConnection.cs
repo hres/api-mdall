@@ -156,7 +156,7 @@ namespace MdallWebApi
 
                 if (!string.IsNullOrEmpty(licenceName))
                 {
-                    commandText += " UPPER(L.LICENCE_NAME) LIKE '%" + licenceName.ToUpper().Trim() + "%'";
+                    commandText += " UPPER(L.LICENCE_NAME) LIKE :licenceName ";
                 }
                 
 
@@ -167,6 +167,11 @@ namespace MdallWebApi
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                if (!string.IsNullOrEmpty(licenceName))
+                {
+                    cmd.Parameters.Add(":licenceName", '%' + licenceName.ToUpper().Trim() + '%');
+                }
+                    
                 try
                 {
                     con.Open();
@@ -507,11 +512,11 @@ namespace MdallWebApi
                 if (!string.IsNullOrEmpty(status))
                 {
                     commandText += " AND";
-                    commandText += " UPPER(COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%' ";
+                    commandText += " UPPER(COMPANY_NAME) LIKE :companyName ";
                 }
                 else {
                     commandText += " WHERE";
-                    commandText += " UPPER(COMPANY_NAME) LIKE '%" + companyName.ToUpper().Trim() + "%' ";
+                    commandText += " UPPER(COMPANY_NAME) LIKE :companyName ";
 
                 }
             }
@@ -519,8 +524,18 @@ namespace MdallWebApi
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
-                cmd.Parameters.Add(":status", status.ToUpper().Trim());
+                if (!string.IsNullOrEmpty(status))
+                {
+                    cmd.Parameters.Add(":status", status.ToUpper().Trim());
+                }
+                    
+                if (!string.IsNullOrEmpty(companyName))
+                {
+                    cmd.Parameters.Add(":companyName", '%' + companyName.ToUpper().Trim() + '%');
+                }
                 
+
+
                 try
                 {
                     con.Open();
@@ -670,7 +685,7 @@ namespace MdallWebApi
             if (!string.IsNullOrEmpty(deviceName))
             {
                 if (!string.IsNullOrEmpty(state)) commandText += " AND";
-                commandText += " D.TRADE_NAME LIKE '%" + deviceName.ToUpper().Trim() + "%' ";
+                commandText += " D.TRADE_NAME LIKE :deviceName ";
             }
             else if (licenceId > 0)
             {
@@ -681,9 +696,17 @@ namespace MdallWebApi
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
-                cmd.Parameters.Add(":licenceId", licenceId);
-               
-                try
+                if (licenceId > 0)
+                {
+                    cmd.Parameters.Add(":licenceId", licenceId);
+                }
+                if (!string.IsNullOrEmpty(deviceName))
+                {
+                    cmd.Parameters.Add(":deviceName", '%' + deviceName.ToUpper().Trim() + '%');
+                }
+
+
+                    try
                 {
                     con.Open();
                     using (OracleDataReader dr = cmd.ExecuteReader())
@@ -800,7 +823,7 @@ namespace MdallWebApi
 
             if (!string.IsNullOrEmpty(deviceIdentifierName))
             {
-                commandText += " DEVICE_IDENTIFIER LIKE '%" + deviceIdentifierName.ToUpper().Trim() + "%'";
+                commandText += " DEVICE_IDENTIFIER LIKE :deviceIdentifierName ";
             }
 
 
@@ -824,8 +847,20 @@ namespace MdallWebApi
             using (OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
-                cmd.Parameters.Add(":licenceId", licenceId);
-                cmd.Parameters.Add(":deviceId", deviceId);
+                if (licenceId > 0)
+                {
+                    cmd.Parameters.Add(":licenceId", licenceId);
+                }
+                if (deviceId > 0)
+                {
+                    cmd.Parameters.Add(":deviceId", deviceId);
+                }
+                    
+                if (!string.IsNullOrEmpty(deviceIdentifierName))
+                {
+                    cmd.Parameters.Add(":deviceIdentifierName", '%' + deviceIdentifierName.ToUpper().Trim() + '%');
+                }
+                    
                 try
                 {
                     con.Open();
@@ -1148,7 +1183,11 @@ namespace MdallWebApi
                 OracleConnection con = new OracleConnection(MdallDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
-                cmd.Parameters.Add(":licence_id", licence_id);
+                if (licence_id > 0)
+                {
+                    cmd.Parameters.Add(":licence_id", licence_id);
+                }
+                   
                 try
                 {
                     con.Open();
