@@ -12,13 +12,13 @@ namespace MdallWebApi.Controllers
     {
         static readonly ILicenceRepository databasePlaceholder = new LicenceRepository();
         
-        public IEnumerable<Licence> GetAllLicence(string state = "", string licence_name = "")
+        public IEnumerable<Licence> GetAllLicence(string state = "", string licence_name = "", string lang="en")
         {
-            return databasePlaceholder.GetAll(state, licence_name);
+            return databasePlaceholder.GetAll(state, licence_name,lang);
         }        
-        public Licence GetLicenceById(int id, string state = "")
+        public Licence GetLicenceById(int id, string state = "", string lang="en")
         {
-            Licence licence = databasePlaceholder.Get(id, state);
+            Licence licence = databasePlaceholder.Get(id, state,lang);
             if (licence == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -27,10 +27,10 @@ namespace MdallWebApi.Controllers
         }
       
 
-        public IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string state = "")
+        public IEnumerable<Licence> GetAllLicenceByCompanyId(int company_id, string state = "", string lang = "en")
         {
 
-            return databasePlaceholder.GetAllLicenceByCompanyId(company_id, state);
+            return databasePlaceholder.GetAllLicenceByCompanyId(company_id, state,lang);
         }
         
     }
