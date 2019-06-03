@@ -126,7 +126,7 @@ namespace MdallWebApi
 
             var items = new List<Licence>();
             string commandText = "SELECT L.* ";
-            if ( lang == "en" )
+            if ( lang != null && lang.Equals("en") )
             {
                 commandText += ", T.LICENCE_TYPE_DESC_E LICENCE_TYPE_DESC "; 
             }
@@ -248,7 +248,7 @@ namespace MdallWebApi
         {
             var item = new Licence();
             string commandText = "SELECT L.* ";
-            if (lang == "en")
+            if (lang != null && lang.Equals("en"))
             {
                 commandText += ", T.LICENCE_TYPE_DESC_E LICENCE_TYPE_DESC ";
             }
@@ -406,7 +406,7 @@ namespace MdallWebApi
         {
             var items = new List<Licence>();
             string commandText = "SELECT UNIQUE L.* ";
-            if (lang == "en")
+            if (lang != null && lang.Equals("en"))
             {
                 commandText += ", T.LICENCE_TYPE_DESC_E LICENCE_TYPE_DESC ";
             }
@@ -949,7 +949,7 @@ namespace MdallWebApi
             string commandText = "SELECT DISTINCT L.ORIGINAL_LICENCE_NO, L.LICENCE_STATUS, L.APPLICATION_ID, L.APPL_RISK_CLASS, L.LICENCE_NAME, L.FIRST_LICENCE_STATUS_DT, L.LAST_REFRESH_DT, L.END_DATE, L.LICENCE_TYPE_CD, ";
             commandText += " C.COMPANY_NAME, C.ADDR_LINE_1, C.ADDR_LINE_2, C.ADDR_LINE_3, C.POSTAL_CODE, C.CITY, C.COUNTRY_CD, C.REGION_CD, C.COMPANY_STATUS, C.COMPANY_ID";
             //commandText += " T.LICENCE_TYPE_CD,";
-            //if (lang.Equals("fr"))
+            //if (lang != null && lang.Equals("fr"))
             //{
             //    commandText += " T.LICENCE_TYPE_DESC_F AS LICENCE_TYPE_DESC";
             //}
@@ -1056,7 +1056,7 @@ namespace MdallWebApi
             string commandText = "SELECT DISTINCT L.ORIGINAL_LICENCE_NO, L.LICENCE_STATUS, L.APPLICATION_ID, L.APPL_RISK_CLASS, L.LICENCE_NAME, L.FIRST_LICENCE_STATUS_DT, L.LAST_REFRESH_DT, L.END_DATE, L.LICENCE_TYPE_CD, ";
             commandText += " C.COMPANY_NAME, C.ADDR_LINE_1, C.ADDR_LINE_2, C.ADDR_LINE_3, C.POSTAL_CODE, C.CITY, C.COUNTRY_CD, C.REGION_CD, C.COMPANY_STATUS, C.COMPANY_ID";
             commandText += " T.LICENCE_TYPE_CD,";
-            if (lang.Equals("fr"))
+            if (lang != null && lang.Equals("fr"))
             {
                 commandText += " T.LICENCE_TYPE_DESC_F AS LICENCE_TYPE_DESC";
             }
@@ -1149,7 +1149,7 @@ namespace MdallWebApi
             string commandText = "SELECT L.ORIGINAL_LICENCE_NO, L.LICENCE_STATUS, L.APPLICATION_ID, L.APPL_RISK_CLASS, L.LICENCE_NAME, L.FIRST_LICENCE_STATUS_DT, L.LAST_REFRESH_DT, L.END_DATE, L.LICENCE_TYPE_CD, ";
             commandText += " C.COMPANY_NAME, C.ADDR_LINE_1, C.ADDR_LINE_2, C.ADDR_LINE_3, C.POSTAL_CODE, C.CITY, C.COUNTRY_CD, C.REGION_CD, C.COMPANY_STATUS, C.COMPANY_ID";
             commandText += " T.LICENCE_TYPE_CD";
-            if (lang.Equals("fr"))
+            if (lang != null && lang.Equals("fr"))
             {
                 commandText += " T.LICENCE_TYPE_DESC_F AS LICENCE_TYPE_DESC";
             }
@@ -1302,7 +1302,7 @@ namespace MdallWebApi
                 commandText += " LICENCE_TYPE_DESC_E AS LICENCE_TYPE_DESC";
 
             }
-            else if (lang.Equals("fr"))
+            else if (lang != null && lang.Equals("fr"))
             {
                 commandText += " LICENCE_TYPE_DESC_F AS LICENCE_TYPE_DESC";
             }
@@ -1351,7 +1351,7 @@ namespace MdallWebApi
         {
             var type = new LicenceType();
             string commandText = "SELECT LICENCE_TYPE_CD, ";
-            if (Lang.Equals("fr"))
+            if (Lang != null && Lang.Equals("fr"))
             {
                 commandText += " LICENCE_TYPE_DESC_F AS LICENCE_TYPE_DESC";
             }

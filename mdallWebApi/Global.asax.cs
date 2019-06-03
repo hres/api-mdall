@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,7 +15,17 @@ namespace MdallWebApi
 
     public class WebApiApplication : System.Web.HttpApplication
     {
-        
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+            if (exception != null)
+            {
+                logger.Debug(exception);
+            }
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
