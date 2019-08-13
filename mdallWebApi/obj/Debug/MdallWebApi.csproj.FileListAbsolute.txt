@@ -101,3 +101,15 @@ C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csproj.App
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csprojResolveAssemblyReference.cache
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.dll
 C:\Users\hcuser\Documents\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.pdb
+C:\dev\api-mdall\MdallWebApi\bin\MdallWebApi.dll.config
+C:\dev\api-mdall\MdallWebApi\bin\MdallWebApi.dll
+C:\dev\api-mdall\MdallWebApi\bin\MdallWebApi.pdb
+C:\dev\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csproj.App.config
+C:\dev\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csprojAssemblyReference.cache
+C:\dev\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csproj.CoreCompileInputs.cache
+C:\dev\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.csproj.CopyComplete
+C:\dev\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.dll
+C:\dev\api-mdall\MdallWebApi\obj\Debug\MdallWebApi.pdb
+C:\dev\api-mdall\MdallWebApi\bin\NLog.config
+C:\dev\api-mdall\MdallWebApi\bin\NLog.dll
+C:\dev\api-mdall\MdallWebApi\bin\NLog.xml
